@@ -74,7 +74,7 @@
     <article id="post-创建博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/06/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time class="dt-published" datetime="2021-03-06T15:49:25.029Z" itemprop="datePublished">2021-03-06</time>
+  <time class="dt-published" datetime="2021-03-06T15:50:32.885Z" itemprop="datePublished">2021-03-06</time>
 </a>
     
   </div>
@@ -109,8 +109,8 @@
 <p>作用是生成静态文件，然后输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>作用是启动服务器。这时候就可以用浏览器打开网址： <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 来进行预览了。</p>
-<p>##github部署<br>注册帐号，创建repo等操作就省略了，具体可参考其他博客（比如参考里面的）</p>
-<p>##配置ssh<br>如果已有public-key可以先删除：</p>
+<h2 id="github部署"><a href="#github部署" class="headerlink" title="github部署"></a>github部署</h2><p>注册帐号，创建repo等操作就省略了，具体可参考其他博客（比如参考里面的）</p>
+<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><p>如果已有public-key可以先删除：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add -D</span><br><span class="line">$ rm -r ~/.ssh</span><br></pre></td></tr></table></figure>
 <p>生成一个github用的SSH-Key：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;youremail@your.com” -f ~/.ssh/github-rsa</span></span><br></pre></td></tr></table></figure>
@@ -123,15 +123,14 @@
 <p>测试：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <p>输出You’ve successfully authenticated, but GitHub does not provide shell access.就表示成功的连上github了</p>
-<p>##撰写博客</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<h2 id="撰写博客"><a href="#撰写博客" class="headerlink" title="撰写博客"></a>撰写博客</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
 
-<p>##参考<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/hzq_0111/article/details/78956821">在github上搭建hexo个人博客</a><br><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/">超详细Hexo+Github博客搭建小白教程</a><br><a target="_blank" rel="noopener" href="https://my.oschina.net/stefanzhlg/blog/529403">git配置多个ssh-key</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hzq_0111/article/details/78956821">在github上搭建hexo个人博客</a><br><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/">超详细Hexo+Github博客搭建小白教程</a><br><a target="_blank" rel="noopener" href="https://my.oschina.net/stefanzhlg/blog/529403">git配置多个ssh-key</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="cklxwk0c40001dtor4uks0fvg" data-title="cb" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/06/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="cklxwlnsf0001ipord7fs5agl" data-title="cb" class="article-share-link">Share</a>
       
       
       
@@ -182,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/hello-world/" data-id="cklxwk0bx0000dtor07u15vwp" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/06/hello-world/" data-id="cklxwlnsb0000ipor3fapdtmx" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
