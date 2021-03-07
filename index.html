@@ -71,10 +71,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Pytorch踩坑记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/07/Pytorch%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2021-03-07T01:55:19.834Z" itemprop="datePublished">2021-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/07/Pytorch%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">Pytorch踩坑记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>记录一下Pytorch报过的比较常见的错误</p>
+<h3 id="IndexError-Dimension-out-of-range-expected-to-be-in-range-of-1-0-but-got-1"><a href="#IndexError-Dimension-out-of-range-expected-to-be-in-range-of-1-0-but-got-1" class="headerlink" title="IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)"></a>IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)</h3><p>一般还是因为预测值的维度和真实值的维度不匹配，可以打印一下tensor.size()看看<br>可以参考<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch/issues/5554">github上的一个issue</a></p>
+<h3 id="RuntimeError-Expected-object-of-scalar-type-Double-but-got-scalar-type-Float-for-argument-2-‘mat2’"><a href="#RuntimeError-Expected-object-of-scalar-type-Double-but-got-scalar-type-Float-for-argument-2-‘mat2’" class="headerlink" title="RuntimeError: Expected object of scalar type Double but got scalar type Float for argument #2 ‘mat2’"></a>RuntimeError: Expected object of scalar type Double but got scalar type Float for argument #2 ‘mat2’</h3><p>按照提示是数据类型的原因，查看输入数据类型为torch.float64，将输入数据类型转为torch.float32，搞定。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/112099126">Pytorch踩坑记录</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/07/Pytorch%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" data-id="cklyi5li30000fforbfuh5myh" data-title="Pytorch踩坑记录" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-创建博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/07/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time class="dt-published" datetime="2021-03-06T16:02:02.496Z" itemprop="datePublished">2021-03-07</time>
+  <time class="dt-published" datetime="2021-03-06T16:06:03.024Z" itemprop="datePublished">2021-03-07</time>
 </a>
     
   </div>
@@ -123,8 +165,10 @@
 <p>测试：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <p>输出You’ve successfully authenticated, but GitHub does not provide shell access.就表示成功的连上github了</p>
-<h2 id="撰写博客"><a href="#撰写博客" class="headerlink" title="撰写博客"></a>撰写博客</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-
+<h2 id="撰写博客"><a href="#撰写博客" class="headerlink" title="撰写博客"></a>撰写博客</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line"><span class="comment"># 本地预览</span></span><br><span class="line">$ hexo s</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>如果hexo d之后出现 ERROR Deployer not found: git，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<p>即可</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hzq_0111/article/details/78956821">在github上搭建hexo个人博客</a><br><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/">超详细Hexo+Github博客搭建小白教程</a><br><a target="_blank" rel="noopener" href="https://my.oschina.net/stefanzhlg/blog/529403">git配置多个ssh-key</a></p>
 
       
@@ -171,6 +215,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/03/07/Pytorch%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">Pytorch踩坑记录</a>
+          </li>
         
           <li>
             <a href="/2021/03/07/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/">个人博客搭建</a>
