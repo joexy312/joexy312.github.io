@@ -71,10 +71,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-[Tool]自动调参工具optuna" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/03/13/%E6%B5%8B%E8%AF%95/" class="article-date">
-  <time class="dt-published" datetime="2021-03-13T15:20:08.245Z" itemprop="datePublished">2021-03-13</time>
+    <a href="/2021/03/08/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/" class="article-date">
+  <time class="dt-published" datetime="2021-03-08T07:25:28.501Z" itemprop="datePublished">2021-03-08</time>
 </a>
     
   </div>
@@ -85,123 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/13/%E6%B5%8B%E8%AF%95/">深度学习常用损失函数总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>本文总结一下深度学习中常用的损失函数。</p>
-<h2 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h2><h3 id="信息量"><a href="#信息量" class="headerlink" title="信息量"></a>信息量</h3><p>信息量来衡量一个事件的不确定性，一个事件发生的概率越大，不确定性越小，则其携带的信息量就越小。</p>
-<p>设𝑋是一个离散型随机变量，其取值为集合，则其概率分布函数为𝑝(𝑥)=𝑃𝑟(𝑋=𝑥),𝑥∈𝑋，则定义事件𝑋=𝑥0 的信息量为：$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$</p>
-<p>𝐼(𝑥0)=−log(𝑝(𝑥0))<br>当𝑝(𝑥0)=1时，该事件必定发生，其信息量为0.</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/13/%E6%B5%8B%E8%AF%95/" data-id="ckm7vliwt0000qhorb6rp8njf" data-title="深度学习常用损失函数总结" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-模板" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/10/%E6%A8%A1%E6%9D%BF/" class="article-date">
-  <time class="dt-published" datetime="2021-03-10T07:35:39.716Z" itemprop="datePublished">2021-03-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/10/%E6%A8%A1%E6%9D%BF/">深度学习代码编写基本模板(Pytorch)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>使用Pytorch编写深度学习代码的基本框架供自己以后使用，并在不断优化中。</p>
-<h2 id="experiments-py"><a href="#experiments-py" class="headerlink" title="experiments.py"></a>experiments.py</h2><p>导入包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from main import *</span><br><span class="line">from torch.optim import lr_scheduler</span><br><span class="line">from torch.optim.adam import Adam</span><br><span class="line">import torch.nn as nn</span><br><span class="line">from models.model import network</span><br><span class="line"># 调试工具</span><br><span class="line">import torchsnooper</span><br><span class="line">import optuna</span><br></pre></td></tr></table></figure>
-
-<p>主函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    # 设置随机种子</span><br><span class="line">    reset_rand()</span><br><span class="line">    </span><br><span class="line">    # 目标函数，返回acc供optuna自动优化</span><br><span class="line">    def objective(trial):</span><br><span class="line">        def model_opt():</span><br><span class="line">            lr &#x3D; trial.suggest_discrete_uniform(&#39;lr&#39;, 1e-3, 1e-2, 1e-3)</span><br><span class="line">            model &#x3D; network()</span><br><span class="line">            optimizer &#x3D; Adam(model.parameters(), lr)</span><br><span class="line">            # scheduler &#x3D; lr_scheduler.MultiStepLR(optimizer&#x3D;optimizer, milestones&#x3D;[10], gamma&#x3D;0.1)</span><br><span class="line">            scheduler &#x3D; None</span><br><span class="line">            return model, optimizer, scheduler</span><br><span class="line"></span><br><span class="line">        acc &#x3D; kFoldTraining(wd,</span><br><span class="line">                            int(trial.suggest_discrete_uniform(&#39;batch_size&#39;, 32, 256, 32)),</span><br><span class="line">                            epoch,</span><br><span class="line">                            model_optimizer&#x3D;model_opt,</span><br><span class="line">                            loss&#x3D;nn.CrossEntropyLoss(),</span><br><span class="line">                            device&#x3D;&#39;cuda:0&#39;,</span><br><span class="line">                            deterministic&#x3D;True,</span><br><span class="line">                            parallel&#x3D;False</span><br><span class="line">                            )</span><br><span class="line">        return acc</span><br><span class="line">    </span><br><span class="line">    # 保存自动调参数结果</span><br><span class="line">    study &#x3D; optuna.create_study(direction&#x3D;&quot;maximize&quot;, pruner&#x3D;optuna.pruners.HyperbandPruner())</span><br><span class="line">    study.optimize(objective, n_trials&#x3D;50)</span><br><span class="line">    print(&quot;Number of finished trials: &quot;, len(study.trials))</span><br><span class="line">    print(&quot;Best trial:&quot;)</span><br><span class="line">    trial &#x3D; study.best_trial</span><br><span class="line">    print(&quot;  Value: &quot;, trial.value)</span><br><span class="line">    print(&quot;  Params: &quot;)</span><br><span class="line">    for key, value in trial.params.items():</span><br><span class="line">        print(&quot;    &#123;&#125;: &#123;&#125;&quot;.format(key, value))</span><br><span class="line"></span><br><span class="line">    df &#x3D; study.trials_dataframe(attrs&#x3D;(&#39;number&#39;, &#39;value&#39;, &#39;params&#39;, &#39;state&#39;))</span><br><span class="line">    df.to_csv(wd+ &#39;&#x2F;dataframe.csv&#39;, index&#x3D;False)</span><br></pre></td></tr></table></figure>
-
-<h2 id="main-py"><a href="#main-py" class="headerlink" title="main.py"></a>main.py</h2><p>导入包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from utils.utils import *</span><br><span class="line">from torch.utils.data import DataLoader</span><br><span class="line">from trainer import trainer</span><br><span class="line">import torchsnooper</span><br></pre></td></tr></table></figure>
-<p>主函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#@torchsnooper.snoop()</span><br><span class="line">def kFoldTraining(data_path,</span><br><span class="line">                  batch_size&#x3D;32,</span><br><span class="line">                  n_epochs&#x3D;50,</span><br><span class="line">                  model_optimizer&#x3D;None,</span><br><span class="line">                  loss&#x3D;None,</span><br><span class="line">                  device&#x3D;&#39;cuda:0&#39;,</span><br><span class="line">                  deterministic&#x3D;False,</span><br><span class="line">                  parallel&#x3D;False):</span><br><span class="line">    for fold in range(1):</span><br><span class="line">        reset_rand()</span><br><span class="line">        tr_set, test_set &#x3D; getDataset(data_path + &#39;&#x2F;label.csv&#39;, fold)</span><br><span class="line">        tr_set &#x3D; DataLoader(tr_set, batch_size, shuffle&#x3D;True)</span><br><span class="line">        test_set &#x3D; DataLoader(test_set, batch_size, shuffle&#x3D;False)</span><br><span class="line"></span><br><span class="line">        model, optimizer, scheduler &#x3D; model_optimizer()</span><br><span class="line">        tr &#x3D; trainer(tr_set, test_set, batch_size, n_epochs, model, optimizer, scheduler, loss, device,</span><br><span class="line">                     deterministic, parallel)</span><br><span class="line">        acc &#x3D; tr.run(fold)</span><br><span class="line">        del tr</span><br><span class="line">    return acc</span><br></pre></td></tr></table></figure>
-
-<h2 id="trainer-py"><a href="#trainer-py" class="headerlink" title="trainer.py"></a>trainer.py</h2><p>导入包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line">import time</span><br><span class="line">import torchsnooper</span><br></pre></td></tr></table></figure>
-
-<p>定义训练器类：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class trainer:</span><br><span class="line">    def __init__(self, training_set, test_set, batch_size, n_epochs, model, optimizer, scheduler, loss,</span><br><span class="line">                 device, deterministic, parallel):</span><br><span class="line">        torch.backends.cudnn.deterministic &#x3D; deterministic</span><br><span class="line">        self.tr_set &#x3D; training_set</span><br><span class="line">        self.test_set &#x3D; test_set</span><br><span class="line">        self.batch_size &#x3D; batch_size</span><br><span class="line">        self.n_epochs &#x3D; n_epochs</span><br><span class="line">        self.model &#x3D; model</span><br><span class="line">        self.device &#x3D; device</span><br><span class="line">        self.parallel &#x3D; parallel</span><br><span class="line">        if parallel:</span><br><span class="line">            self.model &#x3D; nn.DataParallel(model)</span><br><span class="line">        self.model.cuda(self.device)</span><br><span class="line">        self.optimizer &#x3D; optimizer</span><br><span class="line">        self.scheduler &#x3D; scheduler</span><br><span class="line">        self.loss &#x3D; loss</span><br></pre></td></tr></table></figure>
-<p>训练函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># @torchsnooper.snoop()</span><br><span class="line">def train_epoch(self, epoch):</span><br><span class="line">    start_time &#x3D; time.time()</span><br><span class="line">    self.model.train()</span><br><span class="line">    for data, target in self.tr_set:</span><br><span class="line">        data &#x3D; data.cuda(self.device)</span><br><span class="line">        target &#x3D; target.cuda(self.device)</span><br><span class="line">        self.optimizer.zero_grad()</span><br><span class="line">        output &#x3D; self.model(data)</span><br><span class="line">        loss &#x3D; self.loss(output.float(), target.long().squeeze())</span><br><span class="line">        print(loss)</span><br><span class="line">        loss.backward()</span><br><span class="line">        self.optimizer.step()</span><br><span class="line">        # self.scheduler.step()</span><br><span class="line">    all_pred, all_targets &#x3D; self.predict(self.test_set)</span><br><span class="line">    matches &#x3D; all_pred &#x3D;&#x3D; all_targets</span><br><span class="line">    true &#x3D; torch.sum(matches).float().numpy()</span><br><span class="line">    acc &#x3D; true &#x2F; len(self.test_set.dataset)</span><br><span class="line">    print(&#39;epoch&#39;+str(epoch)+&#39;:acc:&#39;+str(acc))</span><br><span class="line">    return acc</span><br></pre></td></tr></table></figure>
-<p>测试函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def predict(self, dataset):</span><br><span class="line">    self.model.eval()</span><br><span class="line">    all_pred &#x3D; torch.zeros(len(dataset.dataset))</span><br><span class="line">    all_targets &#x3D; torch.zeros(len(dataset.dataset))</span><br><span class="line">    for batch_idx, (data, target) in enumerate(dataset):</span><br><span class="line">        with torch.no_grad():</span><br><span class="line">            data &#x3D; data.cuda(self.device)</span><br><span class="line">            target &#x3D; target.cuda(self.device)</span><br><span class="line">            output &#x3D; self.model(data)</span><br><span class="line">            output &#x3D; torch.tensor(torch.argmax(output, -1).view(-1, 1), dtype&#x3D;torch.float32)</span><br><span class="line">            st &#x3D; batch_idx * self.batch_size</span><br><span class="line">            all_pred[st:st + output.shape[0]] &#x3D; output.cpu().squeeze()</span><br><span class="line">            all_targets[st:st + output.shape[0]] &#x3D; target.cpu().squeeze()</span><br><span class="line">    return all_pred, all_targets</span><br></pre></td></tr></table></figure>
-<p>最后使用run函数来调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def run(self, fold):</span><br><span class="line">    bestacc &#x3D; 0</span><br><span class="line">    for epoch in range(1, self.n_epochs + 1):</span><br><span class="line">        acc &#x3D; self.train_epoch(epoch)</span><br></pre></td></tr></table></figure>
-<h2 id="network-py"><a href="#network-py" class="headerlink" title="network.py"></a>network.py</h2><p>基本网络结构搭建：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">import torch.nn as nn</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class network(nn.Module):</span><br><span class="line">    def __init__(self, neural_num):</span><br><span class="line">        super(network, self).__init__()</span><br><span class="line">        self.net &#x3D; nn.Sequential(</span><br><span class="line">            nn.Linear(10, neural_num),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(neural_num, 8),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    def forward(self, data):</span><br><span class="line">        out &#x3D; self.net(data)</span><br><span class="line">        # out &#x3D; torch.sigmoid(out)</span><br><span class="line">        return out</span><br></pre></td></tr></table></figure>
-
-<h2 id="utils-py"><a href="#utils-py" class="headerlink" title="utils.py"></a>utils.py</h2><p>训练数据的生成与读取，以及一些常用的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import numpy as np</span><br><span class="line">import torch</span><br><span class="line">from settings import parse_opts</span><br><span class="line">import pandas as pd</span><br><span class="line">from sklearn.model_selection import StratifiedKFold</span><br><span class="line">from torch.utils.data import TensorDataset</span><br><span class="line">import torchsnooper</span><br></pre></td></tr></table></figure>
-<p>读取setting中的参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def get_keys():</span><br><span class="line">    arg_keys &#x3D; &#123;&#125;</span><br><span class="line">    for arg_key in vars(parse_opts()).keys():</span><br><span class="line">        arg_keys[str(arg_key)] &#x3D; vars(parse_opts())[arg_key]</span><br><span class="line">    return arg_keys</span><br></pre></td></tr></table></figure>
-<p>设置随机种子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def reset_rand():</span><br><span class="line">    seed &#x3D; 1000</span><br><span class="line">    torch.manual_seed(seed)</span><br><span class="line">    torch.cuda.manual_seed(seed)</span><br><span class="line">    np.random.seed(seed)</span><br><span class="line">    random.seed(seed)</span><br></pre></td></tr></table></figure>
-<p>生成训练数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">def saveDataset(path, nfold&#x3D;10):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    :param nfold:</span><br><span class="line">    :param path: the path of dataset</span><br><span class="line">    :param fold: for k-fold validation</span><br><span class="line">    :return: training, validation and test dataset</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    # define the function to generate data here</span><br><span class="line"></span><br><span class="line">    raw &#x3D; pd.read_csv(path)</span><br><span class="line">    nof &#x3D; raw.shape[1] - 2</span><br><span class="line">    nod &#x3D; raw.shape[0]</span><br><span class="line">    data_x &#x3D; np.zeros((nod, nof), dtype&#x3D;np.float32)</span><br><span class="line">    data_y &#x3D; np.zeros((nod, 1), dtype&#x3D;np.int32)</span><br><span class="line">    for i, row in raw.iterrows():</span><br><span class="line">        data_x[i] &#x3D; row[1:nof + 1]</span><br><span class="line">        data_y[i] &#x3D; row[nof + 1]</span><br><span class="line">    skf &#x3D; StratifiedKFold(n_splits&#x3D;nfold, shuffle&#x3D;True)</span><br><span class="line">    fold &#x3D; [0] * len(data_x)</span><br><span class="line">    for i, (x, y) in enumerate(skf.split(data_x, data_y)):</span><br><span class="line">        for item in y:</span><br><span class="line">            fold[item] &#x3D; [i]</span><br><span class="line"></span><br><span class="line">    f &#x3D; open(&#39;&#x2F;home&#x2F;joe&#x2F;GitHub&#x2F;PytorchExample-master&#x2F;label.csv&#39;, &#39;w&#39;)</span><br><span class="line">    title &#x3D; &#39;id,&#39;</span><br><span class="line">    for i in range(nof):</span><br><span class="line">        title +&#x3D; &#39;x&#39; + str(i + 1) + &#39;,&#39;</span><br><span class="line">    title +&#x3D; &#39;y,fold\n&#39;</span><br><span class="line">    f.write(title)</span><br><span class="line"></span><br><span class="line">    for i in range(len(data_x)):</span><br><span class="line">        line &#x3D; &quot;&#123;0&#125;,&#123;1&#125;,&#123;2&#125;,&#123;3&#125;,&#123;4&#125;,&#123;5&#125;,&#123;6&#125;,&#123;7&#125;,&#123;8&#125;,&#123;9&#125;,&#123;10&#125;,&#123;11&#125;,&#123;12&#125;\n&quot;.format(i,</span><br><span class="line">                                                                                 data_x[i][0],</span><br><span class="line">                                                                                 data_x[i][1],</span><br><span class="line">                                                                                 data_x[i][2],</span><br><span class="line">                                                                                 data_x[i][3],</span><br><span class="line">                                                                                 data_x[i][4],</span><br><span class="line">                                                                                 data_x[i][5],</span><br><span class="line">                                                                                 data_x[i][6],</span><br><span class="line">                                                                                 data_x[i][7],</span><br><span class="line">                                                                                 data_x[i][8],</span><br><span class="line">                                                                                 data_x[i][9],</span><br><span class="line">                                                                                 data_y[i][0],</span><br><span class="line">                                                                                 fold[i][0])</span><br><span class="line">        f.write(line)</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
-<p>读取训练数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># @torchsnooper.snoop()</span><br><span class="line">def getDataset(path, fold):</span><br><span class="line">    df &#x3D; pd.read_csv(path, engine&#x3D;&#39;python&#39;)</span><br><span class="line">    df_test &#x3D; df[df.fold &#x3D;&#x3D; fold]</span><br><span class="line">    df_train &#x3D; df[df.fold !&#x3D; fold]</span><br><span class="line">    tr_num &#x3D; len(df_train)</span><br><span class="line">    ts_num &#x3D; len(df_test)</span><br><span class="line">    nof &#x3D; df.shape[1] - 3</span><br><span class="line"></span><br><span class="line">    train_x &#x3D; torch.zeros((tr_num, nof))</span><br><span class="line">    train_y &#x3D; torch.zeros((tr_num, 1))</span><br><span class="line">    test_x &#x3D; torch.zeros((ts_num, nof))</span><br><span class="line">    test_y &#x3D; torch.zeros((ts_num, 1))</span><br><span class="line">    numtrain &#x3D; 0</span><br><span class="line">    numtest &#x3D; 0</span><br><span class="line">    for i, row in df_train.iterrows():</span><br><span class="line">        if numtrain &#x3D;&#x3D; ts_num * 9:</span><br><span class="line">            break</span><br><span class="line">        train_x[numtrain, 0] &#x3D; row.x1</span><br><span class="line">        train_x[numtrain, 1] &#x3D; row.x2</span><br><span class="line">        train_x[numtrain, 2] &#x3D; row.x3</span><br><span class="line">        train_x[numtrain, 3] &#x3D; row.x4</span><br><span class="line">        train_x[numtrain, 4] &#x3D; row.x5</span><br><span class="line">        train_x[numtrain, 5] &#x3D; row.x6</span><br><span class="line">        train_x[numtrain, 6] &#x3D; row.x7</span><br><span class="line">        train_x[numtrain, 7] &#x3D; row.x8</span><br><span class="line">        train_x[numtrain, 8] &#x3D; row.x9</span><br><span class="line">        train_x[numtrain, 9] &#x3D; row.x10</span><br><span class="line">        train_y[numtrain, 0] &#x3D; row.y</span><br><span class="line">        numtrain +&#x3D; 1</span><br><span class="line">    for i, row in df_test.iterrows():</span><br><span class="line">        if numtest &#x3D;&#x3D; ts_num:</span><br><span class="line">            break</span><br><span class="line">        test_x[numtest, 0] &#x3D; row.x1</span><br><span class="line">        test_x[numtest, 1] &#x3D; row.x2</span><br><span class="line">        test_x[numtest, 2] &#x3D; row.x3</span><br><span class="line">        test_x[numtest, 3] &#x3D; row.x4</span><br><span class="line">        test_x[numtest, 4] &#x3D; row.x5</span><br><span class="line">        test_x[numtest, 5] &#x3D; row.x6</span><br><span class="line">        test_x[numtest, 6] &#x3D; row.x7</span><br><span class="line">        test_x[numtest, 7] &#x3D; row.x8</span><br><span class="line">        test_x[numtest, 8] &#x3D; row.x9</span><br><span class="line">        test_x[numtest, 9] &#x3D; row.x10</span><br><span class="line">        test_y[numtest, 0] &#x3D; row.y</span><br><span class="line">        numtest +&#x3D; 1</span><br><span class="line">    mean_x &#x3D; train_x.mean()</span><br><span class="line">    sd_x &#x3D; train_x.std()</span><br><span class="line">    train_x &#x3D; (train_x - mean_x) &#x2F; sd_x</span><br><span class="line"></span><br><span class="line">    mean_x &#x3D; test_x.mean()</span><br><span class="line">    sd_x &#x3D; test_x.std()</span><br><span class="line">    test_x &#x3D; (test_x - mean_x) &#x2F; sd_x</span><br><span class="line"></span><br><span class="line">    trainset &#x3D; TensorDataset(train_x, train_y)</span><br><span class="line">    testset &#x3D; TensorDataset(test_x, test_y)</span><br><span class="line"></span><br><span class="line">    return trainset, testset</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/10/%E6%A8%A1%E6%9D%BF/" data-id="ckm34d99l0000i3or14bifsv4" data-title="深度学习代码编写基本模板(Pytorch)" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-自动调参工具optuna" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/08/%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/" class="article-date">
-  <time class="dt-published" datetime="2021-03-08T07:25:28.537Z" itemprop="datePublished">2021-03-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/08/%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/">深度学习工具(1):自动调参工具optuna</a>
+      <a class="p-name article-title" href="/2021/03/08/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/">深度学习工具(1):自动调参工具optuna</a>
     </h1>
   
 
@@ -226,122 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/" data-id="ckm09fjpj0000g3orgi6l7jgw" data-title="深度学习工具(1):自动调参工具optuna" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-创建博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/08/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time class="dt-published" datetime="2021-03-08T07:15:11.134Z" itemprop="datePublished">2021-03-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/08/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/">个人博客搭建过程记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>记录简单的个人博客搭建过程。</p>
-<h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
-<p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install stable</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>建立博客：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>文件夹名称可以自己随意取，这三句命令的作用是初始化 Hexo </p>
-<p>再次输入命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>作用是生成静态文件，然后输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>作用是启动服务器。这时候就可以用浏览器打开网址： <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 来进行预览了。</p>
-<h2 id="github部署"><a href="#github部署" class="headerlink" title="github部署"></a>github部署</h2><p>注册帐号，创建repo等操作就省略了，具体可参考其他博客（比如参考里面的）</p>
-<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><p>如果已有public-key可以先删除：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add -D</span><br><span class="line">$ rm -r ~/.ssh</span><br></pre></td></tr></table></figure>
-<p>生成一个github用的SSH-Key：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;youremail@your.com” -f ~/.ssh/github-rsa</span></span><br></pre></td></tr></table></figure>
-<p>添加私钥：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add ~/.ssh/id_rsa $ ssh-add ~/.ssh/github_rsa</span><br><span class="line"><span class="comment"># 可以通过 ssh-add -l 来确私钥列表</span></span><br><span class="line">$ ssh-add -l</span><br><span class="line"><span class="comment"># 可以通过 ssh-add -D 来清空私钥列表</span></span><br><span class="line">$ ssh-add -D</span><br></pre></td></tr></table></figure>
-<p>修改配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 ~/.ssh 目录下新建一个config文件</span></span><br><span class="line">$ touch config</span><br></pre></td></tr></table></figure>
-<p>添加内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># github</span></span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/github_rsa</span><br></pre></td></tr></table></figure>
-<p>测试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>输出You’ve successfully authenticated, but GitHub does not provide shell access.就表示成功的连上github了</p>
-<h2 id="撰写博客"><a href="#撰写博客" class="headerlink" title="撰写博客"></a>撰写博客</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line"><span class="comment"># 本地预览</span></span><br><span class="line">$ hexo s</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<p>如果hexo d之后出现 ERROR Deployer not found: git，输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
-<p>即可</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hzq_0111/article/details/78956821">在github上搭建hexo个人博客</a><br><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/">超详细Hexo+Github博客搭建小白教程</a><br><a target="_blank" rel="noopener" href="https://my.oschina.net/stefanzhlg/blog/529403">git配置多个ssh-key</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="cklxwmvj50000ngorgjtda2oj" data-title="个人博客搭建过程记录" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Pytorch踩坑记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/07/Pytorch%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" class="article-date">
-  <time class="dt-published" datetime="2021-03-07T01:55:19.834Z" itemprop="datePublished">2021-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/07/Pytorch%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">Pytorch踩坑记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>记录一下Pytorch报过的比较常见的错误</p>
-<h3 id="IndexError-Dimension-out-of-range-expected-to-be-in-range-of-1-0-but-got-1"><a href="#IndexError-Dimension-out-of-range-expected-to-be-in-range-of-1-0-but-got-1" class="headerlink" title="IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)"></a>IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)</h3><p>一般还是因为预测值的维度和真实值的维度不匹配，可以打印一下tensor.size()看看<br>可以参考<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch/issues/5554">github上的一个issue</a></p>
-<h3 id="RuntimeError-Expected-object-of-scalar-type-Double-but-got-scalar-type-Float-for-argument-2-‘mat2’"><a href="#RuntimeError-Expected-object-of-scalar-type-Double-but-got-scalar-type-Float-for-argument-2-‘mat2’" class="headerlink" title="RuntimeError: Expected object of scalar type Double but got scalar type Float for argument #2 ‘mat2’"></a>RuntimeError: Expected object of scalar type Double but got scalar type Float for argument #2 ‘mat2’</h3><p>按照提示是数据类型的原因，查看输入数据类型为torch.float64，将输入数据类型转为torch.float32，搞定。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/112099126">Pytorch踩坑记录</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/07/Pytorch%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" data-id="cklyi5li30000fforbfuh5myh" data-title="Pytorch踩坑记录" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/08/[Tool]%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/" data-id="ckmzmu1bu0000xnor7a8degx3" data-title="深度学习工具(1):自动调参工具optuna" class="article-share-link">Share</a>
       
       
       
@@ -384,23 +153,7 @@
       <ul>
         
           <li>
-            <a href="/2021/03/13/%E6%B5%8B%E8%AF%95/">深度学习常用损失函数总结</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/10/%E6%A8%A1%E6%9D%BF/">深度学习代码编写基本模板(Pytorch)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/08/%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/">深度学习工具(1):自动调参工具optuna</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/08/%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/">个人博客搭建过程记录</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/07/Pytorch%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">Pytorch踩坑记录</a>
+            <a href="/2021/03/08/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/">深度学习工具(1):自动调参工具optuna</a>
           </li>
         
       </ul>
