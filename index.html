@@ -71,10 +71,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-[Tool]自动调参工具optuna" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-[Algorithm]排序算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/03/08/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/" class="article-date">
-  <time class="dt-published" datetime="2021-03-08T07:25:28.501Z" itemprop="datePublished">2021-03-08</time>
+    <a href="/2021/04/02/%5BAlgorithm%5D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T01:50:19.302Z" itemprop="datePublished">2021-04-02</time>
 </a>
     
   </div>
@@ -85,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/08/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/">深度学习工具(1):自动调参工具optuna</a>
+      <a class="p-name article-title" href="/2021/04/02/%5BAlgorithm%5D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">算法(2)：排序算法总结</a>
     </h1>
   
 
@@ -93,7 +93,153 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://github.com/optuna/optuna">optuna</a>是一个为机器学习设计的自动超参数优化软件框架。它有一个命令式的、按运行方式定义的用户API，用Optuna编写的代码具有很高的模块化，Optuna的用户可以动态地为超参数构建搜索空间。</p>
+        <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>python实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def bubble_sort(arr):</span><br><span class="line">    length &#x3D; len(arr)</span><br><span class="line">    for i in range(length):</span><br><span class="line">        for j in range(length-1-i):</span><br><span class="line">            if arr[j] &gt; arr[j+1]:</span><br><span class="line">                arr[j], arr[j+1] &#x3D; arr[j+1], arr[j]</span><br><span class="line">    return arr</span><br></pre></td></tr></table></figure>
+<p>外层冒泡轮数，里层依次比较，最小（最大）的沉底。<br>嵌套循环，时间复杂度为<strong>O(n2)。</strong></p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>python实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def selection_sort(arr):</span><br><span class="line">    length &#x3D; len(arr)</span><br><span class="line">    for i in range(length):</span><br><span class="line">        min &#x3D; arr[i]</span><br><span class="line">        mini &#x3D; i</span><br><span class="line">        for j in range(i, length):</span><br><span class="line">            if arr[j] &lt; min:</span><br><span class="line">                min &#x3D; arr[j]</span><br><span class="line">                mini &#x3D; j</span><br><span class="line">        arr[i], arr[mini] &#x3D; arr[mini], arr[i]</span><br><span class="line">    return arr</span><br></pre></td></tr></table></figure>
+<p>第i次循环，将最小的和数组第i个数交换位置。<br>双层循环，时间复杂度和冒泡一模一样，都是**O(n2)**。</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>python实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def insertion_sort(arr):</span><br><span class="line">    length &#x3D; len(arr)</span><br><span class="line">    for i in range(length):</span><br><span class="line">        value &#x3D; arr[i]</span><br><span class="line">        j &#x3D; i</span><br><span class="line">        while j &gt; 0:</span><br><span class="line">            if value &lt; arr[j-1]:</span><br><span class="line">                arr[j] &#x3D; arr[j-1]</span><br><span class="line">                j -&#x3D; 1</span><br><span class="line">            else:</span><br><span class="line">                break</span><br><span class="line">        arr[j] &#x3D; value</span><br><span class="line">    return arr</span><br></pre></td></tr></table></figure>
+<p>插入排序实现方法类比扑克牌摸牌。<br>时间复杂度为<strong>O(n2)。</strong></p>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p>python实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def shells_sort(arr):</span><br><span class="line">    length &#x3D; len(arr)</span><br><span class="line">    gap &#x3D; int(length&#x2F;2)</span><br><span class="line">    while gap &gt;&#x3D; 1:</span><br><span class="line">        for i in range(gap, length):</span><br><span class="line">            value &#x3D; arr[i]</span><br><span class="line">            j &#x3D; i</span><br><span class="line">            while j - gap &gt;&#x3D; 0:</span><br><span class="line">                if value &lt; arr[j-gap]:</span><br><span class="line">                    arr[j] &#x3D; arr[j-gap]</span><br><span class="line">                    j -&#x3D; gap</span><br><span class="line">                else:</span><br><span class="line">                    break</span><br><span class="line">            arr[j] &#x3D; value</span><br><span class="line">        if gap &#x3D;&#x3D; 1:</span><br><span class="line">            break</span><br><span class="line">        gap &#x3D; int(gap&#x2F;2)</span><br><span class="line">    return arr</span><br></pre></td></tr></table></figure>
+<p>希尔排序也称作“缩小增量排序”，<strong>是插入排序的一种更高效的改进版本。</strong><br>根据增量进行跳跃的插入排序，然后缩小增量，最后进行增量为1的插入排序。</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>python实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def merge(arr1, arr2):</span><br><span class="line">    arr &#x3D; []</span><br><span class="line">    node1, node2 &#x3D; 0, 0</span><br><span class="line">    while node1 &lt; len(arr1) and node2 &lt; len(arr2):</span><br><span class="line">        if arr1[node1] &lt; arr2[node2]:</span><br><span class="line">            arr.append(arr1[node1])</span><br><span class="line">            node1 +&#x3D; 1</span><br><span class="line">        else:</span><br><span class="line">            arr.append(arr2[node2])</span><br><span class="line">            node2 +&#x3D; 1</span><br><span class="line">    if node1 &#x3D;&#x3D; len(arr1):</span><br><span class="line">        arr.extend(arr2[node2:])</span><br><span class="line">    if node2 &#x3D;&#x3D; len(arr2):</span><br><span class="line">        arr.extend(arr1[node1:])</span><br><span class="line">    return arr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def merge_sort(arr):</span><br><span class="line">    length &#x3D; len(arr)</span><br><span class="line">    if length &#x3D;&#x3D; 1:</span><br><span class="line">        return arr</span><br><span class="line"></span><br><span class="line">    left &#x3D; merge_sort(arr[:int(length&#x2F;2)])</span><br><span class="line">    right &#x3D; merge_sort(arr[int(length&#x2F;2):])</span><br><span class="line">    return merge(left, right)</span><br></pre></td></tr></table></figure>
+<p>归并排序，是创建在归并操作上的一种有效的排序算法。算法是采用分治法（Divide and Conquer）的一个非常典型的应用，且各层分治递归可以同时进行。归并排序思路简单，速度仅次于快速排序，为稳定排序算法，一般用于对总体无序，但是各子项相对有序的数列。</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>python实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">def quick_sort(arr):</span><br><span class="line">    length &#x3D; len(arr)</span><br><span class="line">    if length &lt;&#x3D; 1:</span><br><span class="line">        return arr</span><br><span class="line">    value &#x3D; arr[0]</span><br><span class="line">    left &#x3D; 0</span><br><span class="line">    right &#x3D; length-1</span><br><span class="line">    ifright &#x3D; True</span><br><span class="line">    while left !&#x3D; right:</span><br><span class="line">        if ifright:</span><br><span class="line">            if arr[right] &gt; value:</span><br><span class="line">                right -&#x3D; 1</span><br><span class="line">            else:</span><br><span class="line">                arr[left] &#x3D; arr[right]</span><br><span class="line">                ifright &#x3D; False</span><br><span class="line">                left +&#x3D; 1</span><br><span class="line">        else:</span><br><span class="line">            if arr[left] &lt; value:</span><br><span class="line">                left +&#x3D; 1</span><br><span class="line">            else:</span><br><span class="line">                arr[right] &#x3D; arr[left]</span><br><span class="line">                ifright &#x3D; True</span><br><span class="line">                right -&#x3D; 1</span><br><span class="line">    return quick_sort(arr[:left])+[value]+quick_sort(arr[(left+1):])</span><br></pre></td></tr></table></figure>
+<p>快速排序的思想：<br>1.在待排序的元素任取一个元素作为基准(通常选第一个元素，称为基准元素）<br>2.将待排序的元素进行分块，比基准元素大的元素移动到基准元素的右侧，比基准元素小的移动到作左侧，从而一趟排序过程，就可以锁定基准元素的最终位置<br>3.对左右两个分块重复以上步骤直到所有元素都是有序的（递归过程）</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247485556&idx=1&sn=344738dd74b211e091f8f3477bdf91ee&chksm=fa0e67f5cd79eee3139d4667f3b94fa9618067efc45a797b69b41105a7f313654d0e86949607&scene=21#wechat_redirect">十大排序算法</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/63202860">快速排序</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/02/[Algorithm]%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" data-id="ckmzngsq10000xrordi1teqls" data-title="算法(2)：排序算法总结" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-[Algorithm]算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/%5BAlgorithm%5D%E7%AE%97%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T01:50:08.942Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/02/%5BAlgorithm%5D%E7%AE%97%E6%B3%95/">算法(1)：算法基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。<br>空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。</p>
+<p>严谨的进行算法的时间复杂度：「 大O符号表示法 」，即 T(n) = O(f(n))。<br>其中 n 表示数据规模 ，O(f(n))表示运行算法所需要执行的指令数，和f(n)成正比。<br><strong>一个问题的规模是n，解这一问题的某一算法所需要的时间为T(n)。T(n)称为这一算法的“时间复杂度”。</strong></p>
+<p>O(1): 无论代码执行了多少行，其他区域不会影响到操作，这个代码的时间复杂度都是O(1)<br>O(n): for循环里面的代码会执行 n 遍，因此它消耗的时间是随着 n 的变化而变化的，因此可以用O(n)来表示它的时间复杂度。<br>O(n²) : 当存在双重循环的时候，即把 O(n) 的代码再嵌套循环一遍，它的时间复杂度就是 O(n²) 了。<br>O(logn): 在二分查找法的代码中，通过while循环，成 2 倍数的缩减搜索范围，也就是说需要经过 log2^n 次即可跳出循环。<br>O(nlogn): 将时间复杂度为O(logn)的代码循环N遍的话，那么它的时间复杂度就是 n * O(logn)，也就是了O(nlogn)。</p>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><p><strong>贪心算法是一种在每一步选择中都采取在当前状态下最好或最优的选择，从而希望得到结果是最好或最优的算法。</strong><br>（1）建立数学模型来描述问题。<br>（2）把求解的问题分成若干个子问题。<br>（3）对每一子问题求解，得到子问题的局部最优解。<br>（4）把子问题的局部最优解合成原来问题的一个解。</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归算法是一种直接或者间接调用自身函数或者方法的算法。<br>1.找到如何将大问题分解为小问题的规律<br>2.通过规律写出递推公式<br>3.通过递归公式的临界点推敲出终止条件<br>4.将递推公式和终止条件翻译成代码</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划，无非就是利用历史记录，来避免我们的重复计算。而这些历史记录，我们得需要一些变量来保存，一般是用一维数组或者二维数组来保存。<br>步骤：<br>定义数组元素的含义;<br>找出数组元素之间的关系式;<br>找出初始值。</p>
+<p>###动态规划和递归的区别<br>用动态规划能解决的问题分治策略肯定能解决，只是运行时间长了。<br>1.动态规划法试图只解决每个子问题一次<br>2.一旦某个给定子问题的解已经算出，则将其记忆化存储，以便下次需要同一个子问题解之时直接查表。<br>爬台阶（递归）自顶向下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int f(int n) &#123;</span><br><span class="line">  if (n &#x3D;&#x3D; 1) return 1;</span><br><span class="line">  if (n &#x3D;&#x3D; 2) return 2;</span><br><span class="line">  return f(n-1) + f(n-2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>爬台阶（动态规划）自底向上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1int f(int n) &#123;</span><br><span class="line"> 2    if (n &#x3D;&#x3D; 1) return 1;</span><br><span class="line"> 3    if (n &#x3D;&#x3D; 2) return 2;</span><br><span class="line"> 4    &#x2F;&#x2F; a 保存倒数第二个子状态数据，b 保存倒数第一个子状态数据， temp 保存当前状态的数据</span><br><span class="line"> 5    int a &#x3D; 1, b &#x3D; 2;</span><br><span class="line"> 6    int temp &#x3D; a + b;</span><br><span class="line"> 7    for (int i &#x3D; 3; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line"> 8        temp &#x3D; a + b;</span><br><span class="line"> 9        a &#x3D; b;</span><br><span class="line">10        b &#x3D; temp; </span><br><span class="line">11    &#125;</span><br><span class="line">12    return temp; </span><br><span class="line">13&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h2><p>分治算法，根据字面意思解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23148377/answer/907915556">程序员必须掌握哪些算法</a><br><a target="_blank" rel="noopener" href="https://www.cxyxiaowu.com/852.html">贪心算法</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91582909">告别动态规划，连刷 40 道题</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247485228&idx=1&sn=9f48aee51dcb2b98b56b1827cc658439&chksm=fa0e68adcd79e1bbcd0183ef30a79ede4e46c5835ce05ee6644169c3cc9454073019ccd85d3d&scene=21#wechat_redirect">分治算法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/02/[Algorithm]%E7%AE%97%E6%B3%95/" data-id="ckmzngsq30001xrorad64g99t" data-title="算法(1)：算法基础" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-[Tool]Pyqt5配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/%5BTool%5DPyqt5%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T01:50:01.754Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/02/%5BTool%5DPyqt5%E9%85%8D%E7%BD%AE/">配置记录(1)：ubuntu16.04 + Pycharm 配置Pyqt5</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>安装指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qt5-default</span><br><span class="line">sudo apt-get install qttools5-dev-tools</span><br><span class="line">pip install pyqt5 -i https://pypi.douban.com/simple <span class="comment">#安装pyqt5包</span></span><br><span class="line">sudo apt install pyqt5* <span class="comment">#安装依赖</span></span><br></pre></td></tr></table></figure>
+<p>在Pycharm中进行配置：<br>打开pycharm后点击File - &gt; setting - &gt; Tools - &gt; External Tools, 点击 + 号添加两个文件。<br>（1）第一个是QtDesign用于通过pycharm直接启动QtDesigner，自定义Name（QtDesigner）, Group（Qt5）等参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;bin&#x2F;designer  # 填入Program</span><br><span class="line">$FileDir$  # 填入Working directory</span><br></pre></td></tr></table></figure>
+<p>（2）第二个是将ui文件转换成py文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;bin&#x2F;python3  # 填入Program</span><br><span class="line">-m PyQt5.uic.pyuic  $FileName$ -o $FileNameWithoutExtension$.py  # 填入Arguments</span><br><span class="line">$FileDir$  # 填入Working direction</span><br></pre></td></tr></table></figure>
+
+<p>将ui文件转换为py文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyuic5 -o Lnc.py Lnc.ui</span><br></pre></td></tr></table></figure>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37541097/article/details/80021315">Ubuntu16.04+pycharm+pyqt5安装与配置</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/02/[Tool]Pyqt5%E9%85%8D%E7%BD%AE/" data-id="ckmzngsq50003xror8djr9kre" data-title="配置记录(1)：ubuntu16.04 + Pycharm 配置Pyqt5" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-[Tool]自动调参工具optuna" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T01:49:49.446Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title：深度学习工具-1-自动调参工具optuna"><a href="#title：深度学习工具-1-自动调参工具optuna" class="headerlink" title="title：深度学习工具(1):自动调参工具optuna"></a>title：深度学习工具(1):自动调参工具optuna</h2><p><a target="_blank" rel="noopener" href="https://github.com/optuna/optuna">optuna</a>是一个为机器学习设计的自动超参数优化软件框架。它有一个命令式的、按运行方式定义的用户API，用Optuna编写的代码具有很高的模块化，Optuna的用户可以动态地为超参数构建搜索空间。</p>
 <h2 id="optuna基本概念"><a href="#optuna基本概念" class="headerlink" title="optuna基本概念"></a>optuna基本概念</h2><p>study：根据目标函数的优化Session,由一系列的trial组成。<br>trial：根据目标函数作出一次执行。<br><strong>study的学习目标就是根据多次trial得到的结果发现其中最优的超参数。</strong></p>
 <h2 id="optuna常用搜索方式"><a href="#optuna常用搜索方式" class="headerlink" title="optuna常用搜索方式"></a>optuna常用搜索方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择型搜索方式【从MomentumSGD和Adam二者中选】</span></span><br><span class="line">trail.suggest_categorical(<span class="string">&#x27;optimizer&#x27;</span>,[<span class="string">&#x27;MomentumSGD&#x27;</span>,<span class="string">&#x27;Adam&#x27;</span>])</span><br><span class="line"><span class="comment"># 整型搜索方式【从1～3范围内的int选择】</span></span><br><span class="line">trail.suggest_int(<span class="string">&#x27;num_layers&#x27;</span>,1,3)</span><br><span class="line"><span class="comment"># 浮点型搜索方式【从0.0～1.0范围内float选择】</span></span><br><span class="line">trial.suggest_float(<span class="string">&#x27;momentum&#x27;</span>, 0.0, 1.0)</span><br><span class="line"><span class="comment"># 连续均匀采样搜索方式 【从0～1.0之间的浮点数进行均匀采样】</span></span><br><span class="line">trail.suggest_uniform(<span class="string">&#x27;dropout_rate&#x27;</span>,0.0,1.0)</span><br><span class="line"><span class="comment"># 对数均匀采样方式 【从log(1e-5)~log(1e-2)均匀分布中采样结果再取e的自然指数】</span></span><br><span class="line">trail.suggest_loguniform(<span class="string">&#x27;learning_rate,1e-5,1e-2&#x27;</span>)</span><br><span class="line"><span class="comment"># 离散均匀采样方式 【以0.1为步长拆分0～1后的离散均匀分布中采样】</span></span><br><span class="line">**trail.suggest_discrete_uniform(<span class="string">&#x27;drop_path_rate&#x27;</span>,0.0,1.0,0.1)</span><br></pre></td></tr></table></figure>
 <p>具体可以查看一下<a target="_blank" rel="noopener" href="https://github.com/optuna/optuna/blob/master/optuna/trial/_trial.py">文档</a></p>
@@ -110,7 +256,71 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/08/[Tool]%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/" data-id="ckmzmu1bu0000xnor7a8degx3" data-title="深度学习工具(1):自动调参工具optuna" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/04/02/[Tool]%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/" data-id="ckmzmu1bu0000xnor7a8degx3" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-[Tool]创建博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/%5BTool%5D%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T01:49:39.078Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>记录简单的个人博客搭建过程。</p>
+<h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
+<p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install stable</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>建立博客：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>文件夹名称可以自己随意取，这三句命令的作用是初始化 Hexo </p>
+<p>再次输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>作用是生成静态文件，然后输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>作用是启动服务器。这时候就可以用浏览器打开网址： <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 来进行预览了。</p>
+<h2 id="github部署"><a href="#github部署" class="headerlink" title="github部署"></a>github部署</h2><p>注册帐号，创建repo等操作就省略了，具体可参考其他博客（比如参考里面的）</p>
+<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><p>如果已有public-key可以先删除：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add -D</span><br><span class="line">$ rm -r ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>生成一个github用的SSH-Key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">&quot;youremail@your.com” -f ~/.ssh/github-rsa</span></span><br></pre></td></tr></table></figure>
+<p>添加私钥：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add ~/.ssh/id_rsa $ ssh-add ~/.ssh/github_rsa</span><br><span class="line"><span class="comment"># 可以通过 ssh-add -l 来确私钥列表</span></span><br><span class="line">$ ssh-add -l</span><br><span class="line"><span class="comment"># 可以通过 ssh-add -D 来清空私钥列表</span></span><br><span class="line">$ ssh-add -D</span><br></pre></td></tr></table></figure>
+<p>修改配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在 ~/.ssh 目录下新建一个config文件</span></span><br><span class="line">$ touch config</span><br></pre></td></tr></table></figure>
+<p>添加内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># github</span></span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/github_rsa</span><br></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>输出You’ve successfully authenticated, but GitHub does not provide shell access.就表示成功的连上github了</p>
+<h2 id="撰写博客"><a href="#撰写博客" class="headerlink" title="撰写博客"></a>撰写博客</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line"><span class="comment"># 本地预览</span></span><br><span class="line">$ hexo s</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>如果hexo d之后出现 ERROR Deployer not found: git，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<p>即可</p>
+<p>上传时报错：incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line at….<br>要把标题里英文冒号改为中文的</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hzq_0111/article/details/78956821">在github上搭建hexo个人博客</a><br><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/">超详细Hexo+Github博客搭建小白教程</a><br><a target="_blank" rel="noopener" href="https://my.oschina.net/stefanzhlg/blog/529403">git配置多个ssh-key</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/02/[Tool]%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ckmzngsq50002xror6xqbce2v" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -140,7 +350,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li></ul>
     </div>
   </div>
 
@@ -153,7 +363,23 @@
       <ul>
         
           <li>
-            <a href="/2021/03/08/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/">深度学习工具(1):自动调参工具optuna</a>
+            <a href="/2021/04/02/%5BAlgorithm%5D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">算法(2)：排序算法总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/%5BAlgorithm%5D%E7%AE%97%E6%B3%95/">算法(1)：算法基础</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/%5BTool%5DPyqt5%E9%85%8D%E7%BD%AE/">配置记录(1)：ubuntu16.04 + Pycharm 配置Pyqt5</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/%5BTool%5D%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/">(no title)</a>
           </li>
         
       </ul>

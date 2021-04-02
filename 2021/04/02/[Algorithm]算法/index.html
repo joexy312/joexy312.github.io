@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>算法(1)：算法基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="时间复杂度时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。 严谨的进行算法的时间复杂度：「 大O符号表示法 」，即 T(n) &#x3D; O(f(n))。其中 n 表示数据规模 ，O(f(n))表示运行算法所需要执行的指令数，和f(n)成正比。一个问题的规模是n，解这一问题的某一算法所需要的时间为T(n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法(1)：算法基础">
+<meta property="og:url" content="http://example.com/2021/04/02/[Algorithm]%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="时间复杂度时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。 严谨的进行算法的时间复杂度：「 大O符号表示法 」，即 T(n) &#x3D; O(f(n))。其中 n 表示数据规模 ，O(f(n))表示运行算法所需要执行的指令数，和f(n)成正比。一个问题的规模是n，解这一问题的某一算法所需要的时间为T(n">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-02T01:50:08.942Z">
+<meta property="article:modified_time" content="2021-04-02T01:50:08.942Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-[Algorithm]算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/%5BAlgorithm%5D%E7%AE%97%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T01:50:08.942Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      算法(1)：算法基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。<br>空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。</p>
+<p>严谨的进行算法的时间复杂度：「 大O符号表示法 」，即 T(n) = O(f(n))。<br>其中 n 表示数据规模 ，O(f(n))表示运行算法所需要执行的指令数，和f(n)成正比。<br><strong>一个问题的规模是n，解这一问题的某一算法所需要的时间为T(n)。T(n)称为这一算法的“时间复杂度”。</strong></p>
+<p>O(1): 无论代码执行了多少行，其他区域不会影响到操作，这个代码的时间复杂度都是O(1)<br>O(n): for循环里面的代码会执行 n 遍，因此它消耗的时间是随着 n 的变化而变化的，因此可以用O(n)来表示它的时间复杂度。<br>O(n²) : 当存在双重循环的时候，即把 O(n) 的代码再嵌套循环一遍，它的时间复杂度就是 O(n²) 了。<br>O(logn): 在二分查找法的代码中，通过while循环，成 2 倍数的缩减搜索范围，也就是说需要经过 log2^n 次即可跳出循环。<br>O(nlogn): 将时间复杂度为O(logn)的代码循环N遍的话，那么它的时间复杂度就是 n * O(logn)，也就是了O(nlogn)。</p>
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><p><strong>贪心算法是一种在每一步选择中都采取在当前状态下最好或最优的选择，从而希望得到结果是最好或最优的算法。</strong><br>（1）建立数学模型来描述问题。<br>（2）把求解的问题分成若干个子问题。<br>（3）对每一子问题求解，得到子问题的局部最优解。<br>（4）把子问题的局部最优解合成原来问题的一个解。</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归算法是一种直接或者间接调用自身函数或者方法的算法。<br>1.找到如何将大问题分解为小问题的规律<br>2.通过规律写出递推公式<br>3.通过递归公式的临界点推敲出终止条件<br>4.将递推公式和终止条件翻译成代码</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划，无非就是利用历史记录，来避免我们的重复计算。而这些历史记录，我们得需要一些变量来保存，一般是用一维数组或者二维数组来保存。<br>步骤：<br>定义数组元素的含义;<br>找出数组元素之间的关系式;<br>找出初始值。</p>
+<p>###动态规划和递归的区别<br>用动态规划能解决的问题分治策略肯定能解决，只是运行时间长了。<br>1.动态规划法试图只解决每个子问题一次<br>2.一旦某个给定子问题的解已经算出，则将其记忆化存储，以便下次需要同一个子问题解之时直接查表。<br>爬台阶（递归）自顶向下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int f(int n) &#123;</span><br><span class="line">  if (n &#x3D;&#x3D; 1) return 1;</span><br><span class="line">  if (n &#x3D;&#x3D; 2) return 2;</span><br><span class="line">  return f(n-1) + f(n-2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>爬台阶（动态规划）自底向上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1int f(int n) &#123;</span><br><span class="line"> 2    if (n &#x3D;&#x3D; 1) return 1;</span><br><span class="line"> 3    if (n &#x3D;&#x3D; 2) return 2;</span><br><span class="line"> 4    &#x2F;&#x2F; a 保存倒数第二个子状态数据，b 保存倒数第一个子状态数据， temp 保存当前状态的数据</span><br><span class="line"> 5    int a &#x3D; 1, b &#x3D; 2;</span><br><span class="line"> 6    int temp &#x3D; a + b;</span><br><span class="line"> 7    for (int i &#x3D; 3; i &lt;&#x3D; n; i++) &#123;</span><br><span class="line"> 8        temp &#x3D; a + b;</span><br><span class="line"> 9        a &#x3D; b;</span><br><span class="line">10        b &#x3D; temp; </span><br><span class="line">11    &#125;</span><br><span class="line">12    return temp; </span><br><span class="line">13&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h2><p>分治算法，根据字面意思解释是“分而治之”，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23148377/answer/907915556">程序员必须掌握哪些算法</a><br><a target="_blank" rel="noopener" href="https://www.cxyxiaowu.com/852.html">贪心算法</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91582909">告别动态规划，连刷 40 道题</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247485228&idx=1&sn=9f48aee51dcb2b98b56b1827cc658439&chksm=fa0e68adcd79e1bbcd0183ef30a79ede4e46c5835ce05ee6644169c3cc9454073019ccd85d3d&scene=21#wechat_redirect">分治算法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/04/02/[Algorithm]%E7%AE%97%E6%B3%95/" data-id="ckmzngsq30001xrorad64g99t" data-title="算法(1)：算法基础" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/02/%5BAlgorithm%5D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          算法(2)：排序算法总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/02/%5BTool%5DPyqt5%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">配置记录(1)：ubuntu16.04 + Pycharm 配置Pyqt5</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/02/%5BAlgorithm%5D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">算法(2)：排序算法总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/%5BAlgorithm%5D%E7%AE%97%E6%B3%95/">算法(1)：算法基础</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/%5BTool%5DPyqt5%E9%85%8D%E7%BD%AE/">配置记录(1)：ubuntu16.04 + Pycharm 配置Pyqt5</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/%5BTool%5D%E8%87%AA%E5%8A%A8%E8%B0%83%E5%8F%82%E5%B7%A5%E5%85%B7optuna/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/02/%5BTool%5D%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
