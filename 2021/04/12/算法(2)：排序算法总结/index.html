@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>算法(2)：排序算法总结 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"joexy312.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Joe</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/blue.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="算法(2)：排序算法总结">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-12 10:00" pubdate>
+        2021年4月12日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">算法(2)：排序算法总结</h1>
+            
+            <div class="markdown-body">
+              <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>python实现：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">def <span class="hljs-keyword">bubble_sort(arr):</span><br><span class="hljs-keyword"> </span>   length = len(arr)<br>    for i in range(length):  <span class="hljs-comment"># 外层冒泡轮数</span><br>        for <span class="hljs-keyword">j </span>in range(length<span class="hljs-number">-1</span>-i):  <span class="hljs-comment"># 里层依次比较，最大（最小）沉底</span><br>            if arr[<span class="hljs-keyword">j] </span>&gt; arr[<span class="hljs-keyword">j+1]:</span><br><span class="hljs-keyword"> </span>               arr[<span class="hljs-keyword">j], </span>arr[<span class="hljs-keyword">j+1] </span>= arr[<span class="hljs-keyword">j+1], </span>arr[<span class="hljs-keyword">j]</span><br><span class="hljs-keyword"> </span>   return arr<br></code></pre></td></tr></table></figure>
+<p>嵌套循环，时间复杂度为<strong>O(n2)。</strong></p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>python实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selection_sort</span>(<span class="hljs-params">arr</span>):</span><br>    length = <span class="hljs-built_in">len</span>(arr)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(length):  <span class="hljs-comment"># 循环轮数</span><br>        <span class="hljs-built_in">min</span> = arr[i]<br>        mini = i<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i, length):<br>            <span class="hljs-keyword">if</span> arr[j] &lt; <span class="hljs-built_in">min</span>:<br>                <span class="hljs-built_in">min</span> = arr[j]<br>                mini = j<br>        arr[i], arr[mini] = arr[mini], arr[i]  <span class="hljs-comment"># 将最小的数和第i个数交换</span><br>    <span class="hljs-keyword">return</span> arr<br></code></pre></td></tr></table></figure>
+
+<p>嵌套循环，时间复杂度为<strong>O(n2)。</strong></p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>python实现：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">def <span class="hljs-keyword">insertion_sort(arr):</span><br><span class="hljs-keyword"> </span>   length = len(arr)<br>    for i in range(length):  <span class="hljs-comment"># 循环轮数</span><br>        value = arr[i]<br>        <span class="hljs-keyword">j </span>= i<br>        while <span class="hljs-keyword">j </span>&gt; <span class="hljs-number">0</span>:<br>            if value &lt; arr[<span class="hljs-keyword">j-1]: </span> <span class="hljs-comment">#每次将第i个数插入有序数组中正确位置</span><br>                arr[<span class="hljs-keyword">j] </span>= arr[<span class="hljs-keyword">j-1]</span><br><span class="hljs-keyword"> </span>               <span class="hljs-keyword">j </span>-= <span class="hljs-number">1</span><br><span class="hljs-symbol">            else:</span><br>                <span class="hljs-keyword">break</span><br><span class="hljs-keyword"> </span>       arr[<span class="hljs-keyword">j] </span>= value<br>    return arr<br></code></pre></td></tr></table></figure>
+<p>插入排序实现方法类比扑克牌摸牌。<br>时间复杂度为<strong>O(n2)。</strong></p>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p>python实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">shells_sort</span>(<span class="hljs-params">arr</span>):</span><br>    length = <span class="hljs-built_in">len</span>(arr)<br>    gap = <span class="hljs-built_in">int</span>(length/<span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">while</span> gap &gt;= <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(gap, length):  <span class="hljs-comment"># 从第二个数开始选择插入</span><br>            value = arr[i]<br>            j = i<br>            <span class="hljs-keyword">while</span> j - gap &gt;= <span class="hljs-number">0</span>:  <span class="hljs-comment"># 前面还有数</span><br>                <span class="hljs-keyword">if</span> value &lt; arr[j-gap]:<br>                    arr[j] = arr[j-gap]  <span class="hljs-comment"># 当前数更小，则前移</span><br>                    j -= gap<br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">break</span>  <span class="hljs-comment"># 否则为正确位置，插入</span><br>            arr[j] = value<br>        <span class="hljs-keyword">if</span> gap == <span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">break</span><br>        gap = <span class="hljs-built_in">int</span>(gap/<span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">return</span> arr<br></code></pre></td></tr></table></figure>
+<p>希尔排序也称作“缩小增量排序”，<strong>是插入排序的一种更高效的改进版本。</strong><br>根据增量进行跳跃的插入排序，然后缩小增量，最后进行增量为1的插入排序。</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>python实现：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">def</span> merge(arr<span class="hljs-number">1</span>, arr<span class="hljs-number">2</span>):  # 治<br>    <span class="hljs-attribute">arr</span> =<span class="hljs-meta"> []</span><br>    <span class="hljs-attribute">node1</span>, node<span class="hljs-number">2</span> = <span class="hljs-number">0</span>, <span class="hljs-number">0</span><br>    <span class="hljs-attribute">while</span> node<span class="hljs-number">1</span> &lt; len(arr<span class="hljs-number">1</span>) and node<span class="hljs-number">2</span> &lt; len(arr<span class="hljs-number">2</span>):<br>        <span class="hljs-attribute">if</span> arr<span class="hljs-number">1</span>[node<span class="hljs-number">1</span>] &lt; arr<span class="hljs-number">2</span>[node<span class="hljs-number">2</span>]:<br>            <span class="hljs-attribute">arr</span>.append(arr<span class="hljs-number">1</span>[node<span class="hljs-number">1</span>])<br>            <span class="hljs-attribute">node1</span> += <span class="hljs-number">1</span><br>        <span class="hljs-attribute">else</span>:<br>            <span class="hljs-attribute">arr</span>.append(arr<span class="hljs-number">2</span>[node<span class="hljs-number">2</span>])<br>            <span class="hljs-attribute">node2</span> += <span class="hljs-number">1</span><br>    <span class="hljs-attribute">if</span> node<span class="hljs-number">1</span> == len(arr<span class="hljs-number">1</span>):<br>        <span class="hljs-attribute">arr</span>.extend(arr<span class="hljs-number">2</span>[node<span class="hljs-number">2</span>:])<br>    <span class="hljs-attribute">if</span> node<span class="hljs-number">2</span> == len(arr<span class="hljs-number">2</span>):<br>        <span class="hljs-attribute">arr</span>.extend(arr<span class="hljs-number">1</span>[node<span class="hljs-number">1</span>:])<br>    <span class="hljs-attribute">return</span> arr<br><br><br><span class="hljs-attribute">def</span> merge_sort(arr):  # 分<br>    <span class="hljs-attribute">length</span> = len(arr)<br>    <span class="hljs-attribute">if</span> length == <span class="hljs-number">1</span>:<br>        <span class="hljs-attribute">return</span> arr<br><br>    <span class="hljs-attribute">left</span> = merge_sort(arr[:int(length/<span class="hljs-number">2</span>)])<br>    <span class="hljs-attribute">right</span> = merge_sort(arr[int(length/<span class="hljs-number">2</span>):])<br>    <span class="hljs-attribute">return</span> merge(left, right)<br></code></pre></td></tr></table></figure>
+<p>分治法（Divide and Conquer）的一个非常典型的应用</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>python实现：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs sql">def quick_sort(arr):<br>    length <span class="hljs-operator">=</span> len(arr)<br>    if length <span class="hljs-operator">&lt;=</span> <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">return</span> arr<br>    <span class="hljs-keyword">value</span> <span class="hljs-operator">=</span> arr[<span class="hljs-number">0</span>]  # 取基准元素<br>    <span class="hljs-keyword">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>  # 左指针<br>    <span class="hljs-keyword">right</span> <span class="hljs-operator">=</span> length<span class="hljs-number">-1</span>  # 右指针<br>    ifright <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>  # 左右指针交替移动，先从右指针移动<br>    while <span class="hljs-keyword">left</span> <span class="hljs-operator">!=</span> <span class="hljs-keyword">right</span>:<br>        if ifright:<br>            if arr[<span class="hljs-keyword">right</span>] <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">value</span>:<br>                <span class="hljs-keyword">right</span> <span class="hljs-operator">-</span><span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                arr[<span class="hljs-keyword">left</span>] <span class="hljs-operator">=</span> arr[<span class="hljs-keyword">right</span>]<br>                ifright <span class="hljs-operator">=</span> <span class="hljs-literal">False</span><br>                <span class="hljs-keyword">left</span> <span class="hljs-operator">+</span><span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            if arr[<span class="hljs-keyword">left</span>] <span class="hljs-operator">&lt;</span> <span class="hljs-keyword">value</span>:<br>                <span class="hljs-keyword">left</span> <span class="hljs-operator">+</span><span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                arr[<span class="hljs-keyword">right</span>] <span class="hljs-operator">=</span> arr[<span class="hljs-keyword">left</span>]<br>                ifright <span class="hljs-operator">=</span> <span class="hljs-literal">True</span><br>                <span class="hljs-keyword">right</span> <span class="hljs-operator">-</span><span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> quick_sort(arr[:<span class="hljs-keyword">left</span>])<span class="hljs-operator">+</span>[<span class="hljs-keyword">value</span>]<span class="hljs-operator">+</span>quick_sort(arr[(<span class="hljs-keyword">left</span><span class="hljs-operator">+</span><span class="hljs-number">1</span>):])<br></code></pre></td></tr></table></figure>
+<p>快速排序的思想：<br>1.在待排序的元素任取一个元素作为基准(通常选第一个元素，称为基准元素）<br>2.将待排序的元素进行分块，比基准元素大的元素移动到基准元素的右侧，比基准元素小的移动到作左侧，从而一趟排序过程，就可以锁定基准元素的最终位置<br>3.对左右两个分块重复以上步骤直到所有元素都是有序的（递归过程）</p>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">def bulid_big_heap(nums, i, <span class="hljs-built_in">length</span>):<br>    left = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>  <span class="hljs-comment"># 左叶子</span><br>    <span class="hljs-literal">right</span> = <span class="hljs-number">2</span> * i + <span class="hljs-number">2</span>  <span class="hljs-comment"># 右叶子</span><br>    max_index = i  <span class="hljs-comment"># 最大元素下标</span><br>    <span class="hljs-keyword">if</span> left &lt; <span class="hljs-built_in">length</span> <span class="hljs-keyword">and</span> nums[left] &gt;= nums[i]:<br>        max_index = left<br>    <span class="hljs-keyword">if</span> <span class="hljs-literal">right</span> &lt; <span class="hljs-built_in">length</span> <span class="hljs-keyword">and</span> nums[<span class="hljs-literal">right</span>] &gt; nums[max_index]:<br>        max_index = <span class="hljs-literal">right</span><br>    <span class="hljs-keyword">if</span> max_index != i:  <span class="hljs-comment"># 如果需要交换，先进行交换，然后对交换后的叶子构建堆</span><br>        nums[i], nums[max_index] = nums[max_index], nums[i]<br>        bulid_big_heap(nums, max_index, <span class="hljs-built_in">length</span>)<br><br>def heap_sort(nums):<br>    <span class="hljs-built_in">length</span> = <span class="hljs-built_in">len</span>(nums)<br>    sorted = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-built_in">length</span><span class="hljs-comment"> // 2 - 1, -1, -1):  # 从最后一个非叶子结点开始构建堆</span><br>        bulid_big_heap(nums, i, <span class="hljs-built_in">length</span>)<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-built_in">length</span> - <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>):  <span class="hljs-comment"># 输出堆顶元素</span><br>        nums[<span class="hljs-number">0</span>], nums[j] = nums[j], nums[<span class="hljs-number">0</span>]  <span class="hljs-comment"># 与最后一个元素交换</span><br>        sorted.insert(<span class="hljs-number">0</span>, nums.pop())  <span class="hljs-comment"># 输出</span><br>        bulid_big_heap(nums, <span class="hljs-number">0</span>, j)  <span class="hljs-comment"># 从堆顶开始重新构建堆</span><br>    <span class="hljs-literal">return</span> sorted<br></code></pre></td></tr></table></figure>
+<p>堆排序的过程梳理：</p>
+<ol>
+<li>把数组构建成完全二叉树</li>
+<li>从最后一个非叶子结点开始构建堆</li>
+<li>输出堆顶元素，重建构建成堆</li>
+</ol>
+<h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">def count_sort(arr):<br>    <span class="hljs-built_in">length</span> = <span class="hljs-built_in">len</span>(arr)<br>    max_num = arr[<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-built_in">length</span>):<br>        max_num = <span class="hljs-built_in">max</span>(max_num, arr[i])<br>    count_arr = [<span class="hljs-number">0</span>] * (max_num+<span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-built_in">length</span>):<br>        count_arr[arr[i]] += <span class="hljs-number">1</span><br>    <span class="hljs-built_in">result</span> = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-built_in">length</span>+<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">while</span> count_arr[i] &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-built_in">result</span>.append(i)<br>            count_arr[i] -= <span class="hljs-number">1</span><br>    <span class="hljs-literal">return</span> <span class="hljs-built_in">result</span><br></code></pre></td></tr></table></figure>
+<p>计数排序思路：找出最大值; 计数; 取出<br>适合取值范围相差不大的数组</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247485556&idx=1&sn=344738dd74b211e091f8f3477bdf91ee&chksm=fa0e67f5cd79eee3139d4667f3b94fa9618067efc45a797b69b41105a7f313654d0e86949607&scene=21#wechat_redirect">十大排序算法</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/63202860">快速排序</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Algorithm/">Algorithm</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章均为本人个人学习记录所用
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/13/%E7%AE%97%E6%B3%95(3)%EF%BC%9A%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E7%AE%97%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">算法(3)：树的基本概念和算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/11/%E7%AE%97%E6%B3%95(1)%EF%BC%9A%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">算法(1)：算法基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
