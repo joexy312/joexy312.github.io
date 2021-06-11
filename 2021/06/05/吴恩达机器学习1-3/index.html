@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="吴恩达机器学习课程1-3章的笔记">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>三维CT切片方法、Python代码实现 - Hexo</title>
+  <title>吴恩达-机器学习-1-3章笔记 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="三维CT切片方法、Python代码实现">
+            <span class="h2" id="subtitle" title="吴恩达-机器学习-1-3章笔记">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-27 15:00" pubdate>
-        2021年4月27日 下午
+      <time datetime="2021-06-05 15:00" pubdate>
+        2021年6月5日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      512 字
+      938 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      12
        分钟
     </span>
   
@@ -225,19 +225,45 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">三维CT切片方法、Python代码实现</h1>
+            <h1 style="display: none">吴恩达-机器学习-1-3章笔记</h1>
             
             <div class="markdown-body">
-              <h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/328774789_A_Lightweight_Multi-Section_CNN_for_Lung_Nodule_Classification_and_Malignancy_Estimation">A Lightweight Multi-Section CNN for Lung Nodule Classification and Malignancy Estimation</a><br><a target="_blank" rel="noopener" href="https://github.com/PranjalSahu/MultiSectionCNN">源码</a></p>
-<h2 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h2><h3 id="np-meshgrid"><a href="#np-meshgrid" class="headerlink" title="np.meshgrid"></a>np.meshgrid</h3><p>numpy.meshgrid()——生成网格点坐标矩阵。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs stylus">image_size = <span class="hljs-number">5</span><br>(yy, zz) = np<span class="hljs-selector-class">.meshgrid</span>(range(image_size), range(image_size))<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&#x27;yy=&#x27;</span>, yy)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&#x27;zz=&#x27;</span>, zz)</span></span><br><br>plt<span class="hljs-selector-class">.xlabel</span>(<span class="hljs-string">&#x27;x axis&#x27;</span>)<br>plt<span class="hljs-selector-class">.ylabel</span>(<span class="hljs-string">&#x27;y axis&#x27;</span>)<br>plt<span class="hljs-selector-class">.plot</span>(yy, zz, marker=<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;red&#x27;</span>, linestyle=<span class="hljs-string">&#x27;none&#x27;</span>)<br>plt<span class="hljs-selector-class">.grid</span>()<br>plt<span class="hljs-selector-class">.show</span>()<br></code></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs tap">yy= [[0<span class="hljs-number"> 1 </span>2<span class="hljs-number"> 3 </span>4]<br> [0<span class="hljs-number"> 1 </span>2<span class="hljs-number"> 3 </span>4]<br> [0<span class="hljs-number"> 1 </span>2<span class="hljs-number"> 3 </span>4]<br> [0<span class="hljs-number"> 1 </span>2<span class="hljs-number"> 3 </span>4]<br> [0<span class="hljs-number"> 1 </span>2<span class="hljs-number"> 3 </span>4]]<br>zz= [[0<span class="hljs-number"> 0 </span>0<span class="hljs-number"> 0 </span>0]<br> [1<span class="hljs-number"> 1 </span>1<span class="hljs-number"> 1 </span>1]<br> [2<span class="hljs-number"> 2 </span>2<span class="hljs-number"> 2 </span>2]<br> [3<span class="hljs-number"> 3 </span>3<span class="hljs-number"> 3 </span>3]<br> [4<span class="hljs-number"> 4 </span>4<span class="hljs-number"> 4 </span>4]]<br></code></pre></td></tr></table></figure>
-
-<h3 id="scipy-ndimage-map-coordinates"><a href="#scipy-ndimage-map-coordinates" class="headerlink" title="scipy.ndimage.map_coordinates"></a>scipy.ndimage.map_coordinates</h3><p>文档：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-string">&quot;&quot;</span><span class="hljs-comment">&quot;</span><br>    # 将输入数组通过插值映射到新的坐标。<br>    Map the <span class="hljs-built_in">input</span> array <span class="hljs-keyword">to</span> <span class="hljs-keyword">new</span> coordinates by interpolation.<br>    # 坐标数组用来寻找输出里每一个点在输入中对应的坐标，这些位置输入的坐标值通过设定的阶数的插值得出。<br>    The array of coordinates <span class="hljs-keyword">is</span> used <span class="hljs-keyword">to</span> <span class="hljs-keyword">find</span>, <span class="hljs-keyword">for</span> each point in the output,<br>    the corresponding coordinates in the <span class="hljs-built_in">input</span>. The value of the <span class="hljs-built_in">input</span> at<br>    those coordinates <span class="hljs-keyword">is</span> determined by spline interpolation of the<br>    requested order.<br>    #<br>    The shape of the output <span class="hljs-keyword">is</span> derived from that of the coordinate<br>    array by dropping the <span class="hljs-keyword">first</span> axis. The <span class="hljs-built_in">values</span> of the array along<br>    the <span class="hljs-keyword">first</span> axis are the coordinates in the <span class="hljs-built_in">input</span> array at which the<br>    output value <span class="hljs-keyword">is</span> found.<br><br>    Parameters<br>    ----------<br>    %(<span class="hljs-built_in">input</span>)s<br>    coordinates : array_like<br>        The coordinates at which `<span class="hljs-built_in">input</span>` <span class="hljs-keyword">is</span> evaluated.<br>    %(output)s<br>    order : <span class="hljs-keyword">int</span>, optional<br>        The order of the spline interpolation, default <span class="hljs-keyword">is</span> <span class="hljs-number">3</span>.<br>        The order <span class="hljs-built_in">has</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">be</span> in the <span class="hljs-built_in">range</span> <span class="hljs-number">0</span>-<span class="hljs-number">5</span>.<br>    %(<span class="hljs-keyword">mode</span>)s<br>    %(cval)s<br>    %(prefilter)s<br><br>    Returns<br>    -------<br>    map_coordinates : ndarray<br>        The result of transforming the <span class="hljs-built_in">input</span>. The shape of the output <span class="hljs-keyword">is</span><br>        derived from that of `coordinates` by dropping the <span class="hljs-keyword">first</span> axis.<br><br>    See Also<br>    --------<br>    spline_filter, geometric_transform, scipy.interpolate<br><br>    Examples<br>    --------<br>    &gt;&gt;&gt; from scipy import ndimage<br>    &gt;&gt;&gt; <span class="hljs-keyword">a</span> = np.arange(<span class="hljs-number">12</span>.).reshape((<span class="hljs-number">4</span>, <span class="hljs-number">3</span>))<br>    &gt;&gt;&gt; <span class="hljs-keyword">a</span><br>    array([[  <span class="hljs-number">0</span>.,   <span class="hljs-number">1</span>.,   <span class="hljs-number">2</span>.],<br>           [  <span class="hljs-number">3</span>.,   <span class="hljs-number">4</span>.,   <span class="hljs-number">5</span>.],<br>           [  <span class="hljs-number">6</span>.,   <span class="hljs-number">7</span>.,   <span class="hljs-number">8</span>.],<br>           [  <span class="hljs-number">9</span>.,  <span class="hljs-number">10</span>.,  <span class="hljs-number">11</span>.]])<br>    &gt;&gt;&gt; ndimage.map_coordinates(<span class="hljs-keyword">a</span>, [[<span class="hljs-number">0.5</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>]], order=<span class="hljs-number">1</span>)<br>    array([ <span class="hljs-number">2</span>.,  <span class="hljs-number">7</span>.])<br><br>    Above, the interpolated value of <span class="hljs-keyword">a</span>[<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>] gives output[<span class="hljs-number">0</span>], <span class="hljs-keyword">while</span><br>    <span class="hljs-keyword">a</span>[<span class="hljs-number">2</span>, <span class="hljs-number">1</span>] <span class="hljs-keyword">is</span> output[<span class="hljs-number">1</span>].<br><br>    &gt;&gt;&gt; inds = np.array([[<span class="hljs-number">0.5</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">0.5</span>, <span class="hljs-number">4</span>]])<br>    &gt;&gt;&gt; ndimage.map_coordinates(<span class="hljs-keyword">a</span>, inds, order=<span class="hljs-number">1</span>, cval=-<span class="hljs-number">33.3</span>)<br>    array([  <span class="hljs-number">2</span>. , -<span class="hljs-number">33.3</span>])<br>    &gt;&gt;&gt; ndimage.map_coordinates(<span class="hljs-keyword">a</span>, inds, order=<span class="hljs-number">1</span>, <span class="hljs-keyword">mode</span>=<span class="hljs-string">&#x27;nearest&#x27;</span>)<br>    array([ <span class="hljs-number">2</span>.,  <span class="hljs-number">8</span>.])<br>    &gt;&gt;&gt; ndimage.map_coordinates(<span class="hljs-keyword">a</span>, inds, order=<span class="hljs-number">1</span>, cval=<span class="hljs-number">0</span>, output=bool)<br>    array([ True, False], dtype=bool)<br><br>    <span class="hljs-string">&quot;&quot;</span><span class="hljs-comment">&quot;</span><br></code></pre></td></tr></table></figure>
-<p><img src="/home/joe/MyBlog/themes/fluid/source/img/meshgrid.png" srcset="/img/loading.gif" lazyload> </p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lllxxq141592654/article/details/81532855">meshgrid</a></p>
+              <h2 id="1-1-1-2-什么是机器学习"><a href="#1-1-1-2-什么是机器学习" class="headerlink" title="1.1-1.2 什么是机器学习"></a>1.1-1.2 什么是机器学习</h2><h4 id="Machine-Learning"><a href="#Machine-Learning" class="headerlink" title="Machine Learning"></a>Machine Learning</h4><pre><code>-Grew out of work in AI
+-New capability for computers
+</code></pre>
+<h4 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h4><pre><code>-Database mining
+    Large datasets from growth of automation/web
+-Applications cant&#39;t program by hand.
+    NLP,CV,Autonomous helocopter..
+-Self-customizing programs(私人定制程序)
+-Understaning human learning(brain, real AI)
+</code></pre>
+<h4 id="What-is-ML-definitions"><a href="#What-is-ML-definitions" class="headerlink" title="What is ML?(definitions)"></a>What is ML?(definitions)</h4><pre><code>-Field of study that gives computers the ability to learn without being explicitly programmed.(1959)
+-A computer program is said to learning from experience E with respect to some task T and some performanc
+ e measure P, if its performance on T, as measured by P, improves with experience E(1998).
+(通过P测定在T上的表现因经验E而提高)
+</code></pre>
+<h4 id="Example-邮件分类"><a href="#Example-邮件分类" class="headerlink" title="Example: 邮件分类"></a>Example: 邮件分类</h4><p>T:classifying emails<br>E:label emails<br>P:the fraction of emails correctly classified</p>
+<h4 id="ML-algorithms"><a href="#ML-algorithms" class="headerlink" title="ML algorithms:"></a>ML algorithms:</h4><p><strong>supervised learning, unsupervised learning</strong>, reinforcement learning, recommender systems</p>
+<h2 id="1-3-1-4-监督学习和无监督学习"><a href="#1-3-1-4-监督学习和无监督学习" class="headerlink" title="1.3-1.4 监督学习和无监督学习"></a>1.3-1.4 监督学习和无监督学习</h2><h4 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h4><p><strong>“right answers” given</strong></p>
+<h4 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h4><p><strong>same labels or no labels</strong><br>E.g. 同一主题的新闻显示在一起（聚类），特定基因的表达程度（不同的个体归入不同的类）。。。</p>
+<h4 id="cocktail-party-problem"><a href="#cocktail-party-problem" class="headerlink" title="cocktail party problem:"></a>cocktail party problem:</h4><p>当前语音识别技术已经可以以较高精度识别一个人所讲的话，但是当说话的人数为两人或者多人时，语音识别率就会极大的降低，这一难题被称为鸡尾酒会问题。<br>将两个声音分离出来。</p>
+<h4 id="Regression"><a href="#Regression" class="headerlink" title="Regression:"></a>Regression:</h4><p>Predict continuous valued output</p>
+<h4 id="Classification"><a href="#Classification" class="headerlink" title="Classification:"></a>Classification:</h4><p>Discrete valued output(0/1)</p>
+<h2 id="2-1-线性回归模型描述"><a href="#2-1-线性回归模型描述" class="headerlink" title="2.1 线性回归模型描述"></a>2.1 线性回归模型描述</h2><p>x-&gt;h(hypothesis)-&gt;y ,i.e. h maps x’s to y’s<br>how do we prepresent h?</p>
+<p>$$h_\theta = \theta_0 + \theta_1x$$</p>
+<p>(单变量)线性回归，y是关于x的线性函数<br><img src="/img/ML_WED_123/2.1.1.png" srcset="/img/loading.gif" lazyload alt="参数表示"></p>
+<h2 id="2-2-2-4-代价函数"><a href="#2-2-2-4-代价函数" class="headerlink" title="2.2-2.4 代价函数"></a>2.2-2.4 代价函数</h2><p><img src="/img/ML_WED_123/2.2.1.png" srcset="/img/loading.gif" lazyload alt="损失函数"><br>θ‘s : parameters -&gt; how to choose?<br>Idea: choose θs so that h(x) is close to y for training examles -&gt; minimize <strong>h(x)-y</strong><br>损失函数(cost function)：<br>$$J(\theta_0, \theta_1)=\frac{1}{2m}\sum_{i=1}^{m}(h_\theta(x^{(i)})y^{(i)})^2$$<br><strong>Minimize J</strong><br><strong>找到能使训练集中预测值和真实值的差的平方和最小的θ0和θ1</strong></p>
+<p><img src="/img/ML_WED_123/2.2.2.png" srcset="/img/loading.gif" lazyload alt="h(x)和J(θ)"><br>对θ的每一个取值，对应左边一条直线，和右边一个点</p>
+<p><img src="/img/ML_WED_123/2.2.3.png" srcset="/img/loading.gif" lazyload alt="总结"><br><img src="/img/ML_WED_123/2.2.4.png" srcset="/img/loading.gif" lazyload alt="增加一个参数的损失函数示意图"></p>
+<h2 id="2-5-2-6-梯度下降算法"><a href="#2-5-2-6-梯度下降算法" class="headerlink" title="2.5-2.6 梯度下降算法"></a>2.5-2.6 梯度下降算法</h2><p>梯度下降算法：最小化损失函数J<br><img src="/img/ML_WED_123/2.3.1.png" srcset="/img/loading.gif" lazyload alt="Problem Setup"></p>
+<p>-把损失函数想像成一座山，每次从下山最快的方向走一小步 -&gt; 收敛至局部最低点<br>-从不同的地方开始下山可能会得到不同的结果<br><img src="/img/ML_WED_123/2.3.2.png" srcset="/img/loading.gif" lazyload alt="梯度下降算法以及通常是同步更新"><br><img src="/img/ML_WED_123/2.3.3.png" srcset="/img/loading.gif" lazyload alt="直观理解偏导数项的意义"><br>alpha代表学习率（步长），偏导数代表斜率，决定了更新的方向和速度<br><img src="/img/ML_WED_123/2.3.4.png" srcset="/img/loading.gif" lazyload alt="选择合适的学习率"><br><img src="/img/ML_WED_123/2.3.5.png" srcset="/img/loading.gif" lazyload alt="学习率不变也可以收敛到局部最小"><br>接近局部最小点的时候，学习率也会自动变小</p>
+<h2 id="3-线性代数基础"><a href="#3-线性代数基础" class="headerlink" title="3 线性代数基础"></a>3 线性代数基础</h2><p>矩阵(matrix)：<br>$$A=\begin{bmatrix}<br>1 &amp; 2 &amp; 3 &amp; 4 \<br>5 &amp; 6 &amp; 7 &amp; 8 \<br>9 &amp; 10 &amp; 11 &amp; 12 \<br>\end{bmatrix}$$<br>$A_{ij}$表示第i行第j列，如$A_{22}$: 6<br>（因为还没有解决用hexo搭博客的时候多行公式的渲染问题，所以矩阵显示有点问题）<br>(latex公式里面可以用\cdots\vdots\ddots在矩阵里画省略号)</p>
+<p>向量(vector): nx1的矩阵</p>
+<p>矩阵加法：对应元素相加，只有相同形状的矩阵可以相加<br>矩阵和标量(scalar)的乘法：矩阵每一个元素都进行相应计算<br>矩阵之间的乘法：左行乘右列，得到的矩阵尺寸为左矩阵行数和右矩阵列数<br><img src="/img/ML_WED_123/3.1.1.png" srcset="/img/loading.gif" lazyload alt="矩阵乘向量"><br><img src="/img/ML_WED_123/3.1.2.png" srcset="/img/loading.gif" lazyload alt="用矩阵乘法来简化代码"><br>直接通过左行乘右列，所以每一列就是每一个假设函数得到的预测值，非常简便</p>
+<p>其他特性：<br>1.矩阵乘法不服从交换律<br>2.矩阵乘法<strong>服从</strong>结合律<br>3.单位矩阵，表示为$I$或者$I_{n \times n}$，表示对角线上都是1,其余为0，对任意矩阵A，$AI=IA=A$</p>
+<p><strong>逆矩阵</strong><br>如果矩阵A是$m \times m$的矩阵，并且有逆矩阵，那么：$AA^{-1}=A^{-1}A=I$<br>方阵，且行列式不为零才有逆矩阵<br>没有逆矩阵的矩阵可以想象成非常近似于零，称为<strong>奇异矩阵(singular)</strong></p>
+<p>转置矩阵：<br><img src="/img/ML_WED_123/3.1.2.png" srcset="/img/loading.gif" lazyload alt="转置矩阵"></p>
 
             </div>
             <hr>
@@ -247,7 +273,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%8C%BB%E5%AD%A6%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">医学图像处理</a>
+                      <a class="hover-with-bg" href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">机器学习笔记</a>
                     
                   </div>
                 
@@ -255,7 +283,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/MIP/">MIP</a>
+                      <a class="hover-with-bg" href="/tags/notes/">notes</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ML/">ML</a>
                     
                   </div>
                 
@@ -272,9 +302,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/15/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">
+                      <a href="/2021/06/05/6.5-6.11/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常用网站记录</span>
+                        <span class="hidden-mobile">每周笔记(6.5-6.11)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -282,8 +312,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/04/15/%E7%AE%97%E6%B3%95(5)%EF%BC%9A%E6%90%9C%E7%B4%A2/">
-                        <span class="hidden-mobile">搜索</span>
+                      <a href="/2021/05/15/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">
+                        <span class="hidden-mobile">常用网站记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
