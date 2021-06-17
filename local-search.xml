@@ -4,7 +4,65 @@
   
   
   <entry>
-    <title>每周笔记(6.5-6.11)</title>
+    <title>吴恩达-机器学习-7-10章笔记</title>
+    <link href="/2021/06/14/%E5%90%B4%E6%81%A9%E8%BE%BE-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-7-10%E7%AB%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2021/06/14/%E5%90%B4%E6%81%A9%E8%BE%BE-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-7-10%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="7-1-过拟合问题"><a href="#7-1-过拟合问题" class="headerlink" title="7.1 过拟合问题"></a>7.1 过拟合问题</h2><h3 id="过拟合与欠拟合描述"><a href="#过拟合与欠拟合描述" class="headerlink" title="过拟合与欠拟合描述"></a>过拟合与欠拟合描述</h3><ul><li>欠拟合：数据拟合效果很差，偏差很大  </li><li>过拟合：千方百计地拟合了训练集，无法泛化到新的样本中，方差很大</li><li>泛化：一个假设模型应用到新样本的能力</li></ul><p><img src="/img/ML_WED_78910/7.1.1.png" alt="逻辑回归问题中的过拟合直观表现"></p><h4 id="解决过拟合的方法"><a href="#解决过拟合的方法" class="headerlink" title="解决过拟合的方法"></a>解决过拟合的方法</h4><ul><li>减少特征数量<ul><li>人工选择用于训练的特征  </li><li>模型选择算法，自动选择保留的特征</li></ul></li><li>正则化(Regularization)<ul><li>保留所有特征向量，减少量级</li><li>在有许多特征时表现良好，每一个特征都对预测结果产生一定影响</li></ul></li></ul><h2 id="7-2-正则化与损失函数"><a href="#7-2-正则化与损失函数" class="headerlink" title="7.2 正则化与损失函数"></a>7.2 正则化与损失函数</h2><h3 id="正则化直观理解"><a href="#正则化直观理解" class="headerlink" title="正则化直观理解"></a>正则化直观理解</h3><p><img src="/img/ML_WED_78910/7.2.1.png" alt="正则化直观理解"><br>参数值较小意味着更简单的参数模型，通过对$\theta_3$和$\theta_4$添加惩罚项，让他们接近0,得到一个更简单的模型，接近于二次函数</p><ul><li>更简单的假设</li><li>更不容易过拟合</li></ul><p><img src="/img/ML_WED_78910/7.2.2.png" alt="正则化"><br>在损失函数中添加正则化项，控制在两个目标之间的取舍</p><ul><li>第一项控制模型训练拟合</li><li>第二项使参数尽可能小</li><li>$\lambda$:正则化参数，控制两项之间的平衡关系</li></ul><h2 id="7-3-7-4-带正则化项的回归和分类"><a href="#7-3-7-4-带正则化项的回归和分类" class="headerlink" title="7.3-7.4 带正则化项的回归和分类"></a>7.3-7.4 带正则化项的回归和分类</h2><p><img src="/img/ML_WED_78910/7.3.1.png" alt="带正则化项的回归与分类的损失函数及梯度下降"></p><hr><h2 id="8-神经网络"><a href="#8-神经网络" class="headerlink" title="8 神经网络"></a>8 神经网络</h2><blockquote><p>神经网络被证明在学习复杂的非线性假设上是一种好得多的算法</p></blockquote><p>背景：</p><ul><li>起源：尝试设计模拟人类大脑的算法</li><li>80-90年代得到广泛应用，90s之后流行度降低</li><li>近年由于计算机算力的提升重新复苏</li></ul><h4 id="逻辑单元"><a href="#逻辑单元" class="headerlink" title="逻辑单元"></a>逻辑单元</h4><p><img src="/img/ML_WED_78910/8.1.1.png" alt="神经元"><br>下图表示一个简单的神经网络，由输入层、隐含层和输出层组成<br><img src="/img/ML_WED_78910/8.1.2.png" alt="神经网络"><br>神经网络的计算过程，以$a_1^{(2)}$为例，(2)代表第二层，通过第一层神经元乘以各自到$a_1$的权重并求和，通过激活函数$g$进行激活。<br><img src="/img/ML_WED_78910/8.1.3.png" alt="神经网络计算过程"><br>如下图所示，把$\Theta x$表示为$z$,如$z^{(2)}=\Theta^{(1)}x$，即$z^{(2)}=\Theta^{(1)}a^{(1)}$,可以更简洁地表示前向传播过程<br><img src="/img/ML_WED_78910/8.1.4.png" alt="神经网络前向传播"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>周记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>吴恩达</tag>
+      
+      <tag>周记</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>机器学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>二分查找</title>
+    <link href="/2021/06/12/6.12-6.18/"/>
+    <url>/2021/06/12/6.12-6.18/</url>
+    
+    <content type="html"><![CDATA[<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p><a href="https://leetcode-cn.com/problems/first-bad-version/">210613_leetcode278_第一个错误的版本</a><br>二分查找的典型应用</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">firstBadVersion</span>(<span class="hljs-params">self, n</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type n: int</span><br><span class="hljs-string">        :rtype: int</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        low = <span class="hljs-number">1</span><br>        high = n<br>        <span class="hljs-keyword">while</span>(low &lt; high):<br>            mid = (high - low) // <span class="hljs-number">2</span> + low<br>            <span class="hljs-keyword">if</span> isBadVersion(mid):<br>                high = mid<br>            <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> isBadVersion(mid):<br>                low = mid + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> low<br></code></pre></td></tr></table></figure><p><a href="https://leetcode-cn.com/problems/guess-number-higher-or-lower/">猜数字大小</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># The guess API is already defined for you.</span><br><span class="hljs-comment"># @param num, your guess</span><br><span class="hljs-comment"># @return -1 if my number is lower, 1 if my number is higher, otherwise return 0</span><br><span class="hljs-comment"># def guess(num):</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">guessNumber</span>(<span class="hljs-params">self, n</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type n: int</span><br><span class="hljs-string">        :rtype: int</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        low = <span class="hljs-number">1</span><br>        high = <span class="hljs-number">2</span>^<span class="hljs-number">31</span> - <span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>):<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> guess(n):<br>                <span class="hljs-keyword">return</span> n<br>            <span class="hljs-keyword">elif</span> guess(n) &lt; <span class="hljs-number">0</span>:<br>                high = n<br>            <span class="hljs-keyword">else</span>:<br>                low = n<br>            n = (high - low) // <span class="hljs-number">2</span> + low<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+      <tag>二分查找</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>每周代码(6.5-6.11)</title>
     <link href="/2021/06/05/6.5-6.11/"/>
     <url>/2021/06/05/6.5-6.11/</url>
     
@@ -15,16 +73,14 @@
       
       <category>周记</category>
       
-      <category>算法</category>
-      
     </categories>
     
     
     <tags>
       
-      <tag>Algorithm</tag>
+      <tag>算法</tag>
       
-      <tag>notes</tag>
+      <tag>周记</tag>
       
     </tags>
     
@@ -44,16 +100,18 @@
       
       <category>周记</category>
       
-      <category>机器学习笔记</category>
-      
     </categories>
     
     
     <tags>
       
-      <tag>notes</tag>
+      <tag>吴恩达</tag>
       
-      <tag>ML</tag>
+      <tag>周记</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>机器学习</tag>
       
     </tags>
     
@@ -78,7 +136,7 @@
     
     <tags>
       
-      <tag>memo</tag>
+      <tag>备忘</tag>
       
     </tags>
     
@@ -103,7 +161,7 @@
     
     <tags>
       
-      <tag>MIP</tag>
+      <tag>医学图像处理</tag>
       
     </tags>
     
@@ -128,7 +186,9 @@
     
     <tags>
       
-      <tag>Algorithm</tag>
+      <tag>算法</tag>
+      
+      <tag>搜索</tag>
       
     </tags>
     
@@ -153,7 +213,9 @@
     
     <tags>
       
-      <tag>Algorithm</tag>
+      <tag>算法</tag>
+      
+      <tag>动态规划</tag>
       
     </tags>
     
@@ -178,7 +240,9 @@
     
     <tags>
       
-      <tag>Algorithm</tag>
+      <tag>算法</tag>
+      
+      <tag>二叉树</tag>
       
     </tags>
     
@@ -203,7 +267,9 @@
     
     <tags>
       
-      <tag>Algorithm</tag>
+      <tag>算法</tag>
+      
+      <tag>排序</tag>
       
     </tags>
     
@@ -228,7 +294,7 @@
     
     <tags>
       
-      <tag>Algorithm</tag>
+      <tag>算法</tag>
       
     </tags>
     
@@ -253,9 +319,9 @@
     
     <tags>
       
-      <tag>DL</tag>
+      <tag>深度学习</tag>
       
-      <tag>tools</tag>
+      <tag>工具</tag>
       
     </tags>
     
@@ -280,7 +346,7 @@
     
     <tags>
       
-      <tag>tools</tag>
+      <tag>工具</tag>
       
     </tags>
     
@@ -305,7 +371,7 @@
     
     <tags>
       
-      <tag>tools</tag>
+      <tag>工具</tag>
       
     </tags>
     
