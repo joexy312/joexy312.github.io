@@ -232,18 +232,22 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/02/%E8%82%BA%E7%BB%93%E8%8A%82%E5%88%86%E7%B1%BB%E4%BB%BB%E5%8A%A1%E5%AE%9E%E7%8E%B0/">肺结节分类任务实现</a>
+        <a href="/2021/07/09/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81%EF%BC%887-3-7-9%EF%BC%89/">每周代码(7.3-7.9)</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/02/%E8%82%BA%E7%BB%93%E8%8A%82%E5%88%86%E7%B1%BB%E4%BB%BB%E5%8A%A1%E5%AE%9E%E7%8E%B0/">
+        <a href="/2021/07/09/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81%EF%BC%887-3-7-9%EF%BC%89/">
           
           
             
           
-          整理了一下实现肺结节分类的大致流程和关键代码，比较了几种方法的效果。
-数据预处理
-实验选用的LIDC-IDRI数据集，包含1018个病例2635个肺结节。第一步首先需要筛选肺结节，并将肺结节从CT图像中提取出来：最终有820个肺结节符合标准，将这些肺结节所在的小立方体从CT中提取出来，边长选这些肺结节最大的等效直径作为边长。  ($1018\times512\times512\times512\r
+          leetcode_53_最大子序和思路：动态规划的题目我比较习惯的三个步骤是：规定dp数组的含义，找出数组元素之间的关系式，找出初始值，用这个思路来解决后面的问题。
+
+因为问题求解最大子序列，定义dp[i]保存前n项的最大子序
+可以发现dp[i]的值要么是dp[i-1]加上当前的值，要么前面是负数直接舍弃
+定义dp[0]=0
+
+1234567891011class Solution(object)
         </a>
       </p>
 
@@ -251,12 +255,28 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-02 13:29" pubdate>
-              2021-07-02
+            <time datetime="2021-07-09 16:05" pubdate>
+              2021-07-09
             </time>
           </div>
         
         
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
         
       </div>
     </article>
@@ -439,34 +459,17 @@ set() 函数创建一个无序不重复元素集，可进行关系测试，删�
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/06/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8-%E6%9E%97%E5%AD%90%E9%9B%A8-%E7%AC%94%E8%AE%B0/">大数据技术原理与应用-林子雨-笔记</a>
+        <a href="/2021/06/17/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-12-6-18/">每周代码(6.12-6.18)</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/06/17/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8-%E6%9E%97%E5%AD%90%E9%9B%A8-%E7%AC%94%E8%AE%B0/">
+        <a href="/2021/06/17/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-12-6-18/">
           
           
             
           
-          课程地址
-第一章 大数据概述1.1 大数据时代
-2010年前后，以云计算、大数据、物联网的普及为标志迎来第三次信息化浪潮
-技术支撑：存储、计算、网络
-存储设备容量不断增加，个人数据越来越多，企业数据越来越多
-CPU处理能力大幅提升
-网络带宽不断增加
-
-
-
-感知式系统阶段：物联网的大规模普及
-
-物联网底层是感知层，如RFID，摄像头，传感器
-
-
-1.2 大数据概念和影响
-
-大数据摩尔定律
-大数据由结
+          leetcode_344_反转字符串思路:直接用双指针将头尾依次交换即可
+12345678910111213class Solution(object):    def reverseString(self, s):        &quot;&quot;&quot;        :type s: List[str]        :rtype: None Do not return anyth
         </a>
       </p>
 
@@ -474,7 +477,7 @@ CPU处理能力大幅提升
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-17 17:22" pubdate>
+            <time datetime="2021-06-17 17:21" pubdate>
               2021-06-17
             </time>
           </div>
@@ -483,7 +486,7 @@ CPU处理能力大幅提升
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>
+              <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
             
           </div>
         
@@ -491,7 +494,9 @@ CPU处理能力大幅提升
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
           </div>
         
