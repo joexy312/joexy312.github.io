@@ -232,6 +232,86 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/16/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-10-7-16/">每周代码(7.10-7.16)</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/16/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-10-7-16/">
+          
+          
+            
+          
+          leetcode_94_二叉树的中序遍历思路：
+
+普通的二叉树遍历，X序遍历就是指的根的位置，比如中序就是把根放中间，用“左根右”的方式遍历;
+可以用递归的方式实现，先遍历左子树，然后输出根的值，然后遍历右子树，前序后续同理，只是顺序不同123456789101112131415class Solution(object):    def inorderTraversal(self, root):
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-16 16:34" pubdate>
+              2021-07-16
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/16/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E6%80%BB%E7%BB%93/">卷积神经网络的总结</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/16/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E6%80%BB%E7%BB%93/">
+          
+          
+            
+          
+          卷积层：卷积层由一组滤波器组成，滤波器可以视为二维数字矩阵。这是一个示例3x3滤波器：我们可以将滤波器与输入图像进行卷积来产生输出图像，具体的步骤如下：
+
+在图像的某个位置上覆盖滤波器；
+将滤波器中的值与图像中的对应像素的值相乘；
+把上面的乘积加起来，得到的和是输出图像中目标像素的值；
+对图像的所有位置重复此操作。
+
+
+查看不同filter对图像的影响
+通常，卷积有助于我们找到特定的局部图像特征（
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-16 09:54" pubdate>
+              2021-07-16
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/07/09/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81%EF%BC%887-3-7-9%EF%BC%89/">每周代码(7.3-7.9)</a>
       </h1>
 
@@ -365,120 +445,6 @@ set() 函数创建一个无序不重复元素集，可进行关系测试，删�
             <i class="iconfont icon-date"></i>
             <time datetime="2021-06-25 15:02" pubdate>
               2021-06-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/22/%E5%90%B4%E6%81%A9%E8%BE%BE-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-12-14%E7%AB%A0%E7%AC%94%E8%AE%B0/">吴恩达-机器学习-12-14章笔记</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/22/%E5%90%B4%E6%81%A9%E8%BE%BE-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-12-14%E7%AB%A0%E7%AC%94%E8%AE%B0/">
-          
-          
-            
-          
-          12.1-12.2 误差分析
-
-首先花较短的时间(比如一天时间)非常简单地把整个系统流程实现出来，然后把添加更多数据，更多特征等的学习曲线画出来，这样可以直观的看出每种方法对效果的提升，而不是依靠直觉判断怎么设计系统。
-误差分析：观察验证集上被错误分类的数据有没有什么共同特点，以此来获得优化的灵感
-通过数值估计模型效果好坏
- 交叉验证使用和不使用某算法的效果
-
-
-
-12.3 不对称分类的误差评估偏
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-22 16:08" pubdate>
-              2021-06-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-              <a href="/tags/%E5%90%B4%E6%81%A9%E8%BE%BE/">吴恩达</a>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/17/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-12-6-18/">每周代码(6.12-6.18)</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/17/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-12-6-18/">
-          
-          
-            
-          
-          leetcode_344_反转字符串思路:直接用双指针将头尾依次交换即可
-12345678910111213class Solution(object):    def reverseString(self, s):        &quot;&quot;&quot;        :type s: List[str]        :rtype: None Do not return anyth
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-17 17:21" pubdate>
-              2021-06-17
             </time>
           </div>
         
