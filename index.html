@@ -232,6 +232,79 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/23/MNIST%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">MNIST手写数字识别</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/23/MNIST%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
+          
+          
+            
+          
+          模型设计首先手写了一个简单的CNN：
+123456789101112131415161718192021class network(nn.Module):    def __init__(self):        super(network, self).__init__()        self.net = nn.Sequential(            nn.Conv2d(1, 32,
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-23 11:41" pubdate>
+              2021-07-23
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/22/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-17-7-23/">每周代码(7.17-7.23)</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/22/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-17-7-23/">
+          
+          
+            
+          
+          leetcode_409_最长回文串思路：
+
+回文串长度与每个字母的个数有关，首先用counter进行计数
+每个字母每出现两次，回文串长度就+2（首尾各一个）
+回文串最中间可以是单个字母，所以只要有任意字母个数不是2的倍数，总数就再+11234567891011121314class Solution(object):    def longestPalindrome(self, s):     
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-22 23:46" pubdate>
+              2021-07-22
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/07/16/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-10-7-16/">每周代码(7.10-7.16)</a>
       </h1>
 
@@ -337,114 +410,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2021-07-09 16:05" pubdate>
               2021-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/01/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-26-7-3/">每周代码(6.26-7.3)</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/01/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-26-7-3/">
-          
-          
-            
-          
-          leetcode_150_逆波兰表达式求值思路：
-
-观察题目中所谓的拟波兰表达式求值方法，在每次遇到算符的时候明显有后进先出的数据结构，因此考虑用栈来实现;
-单独用一个数组实现堆栈功能，维护依次输入的数字，每次遇到算符时取出堆栈顶的数字，根据算符进行计算
-因为python2和python3除法的区别， 在实现除法的时候容易出错，这里用的是python2,普通整数除法的结果只会取整数部分，所以要把除
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-01 18:17" pubdate>
-              2021-07-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/25/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-19-6-25/">每周代码(6.19-6.25)</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/25/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-19-6-25/">
-          
-          
-            
-          
-          leetcode_804_唯一摩尔斯密码词思路：首先字母和摩尔斯编码一一对应，可以用类似哈系表的方法进行转换即可；难点在于去掉重复的翻译，最开始写的方法复杂度都比较高，后来学到python里面可以用set函数来解决，不包含重复数据。
-
-set() 函数创建一个无序不重复元素集，可进行关系测试，删除重复数据，还可以计算交集、差集、并集等。
-
-123456789def uniqueMorseRepre
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-25 15:02" pubdate>
-              2021-06-25
             </time>
           </div>
         
