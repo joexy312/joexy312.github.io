@@ -15,10 +15,10 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Joe">
   <meta name="keywords" content="">
   
-  <title>配置环境 - Hexo</title>
+  <title>常见问题 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="配置环境">
+            <span class="h2" id="subtitle" title="常见问题">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-01 11:26" pubdate>
-        2021年7月1日 上午
+      <time datetime="2021-07-23 21:02" pubdate>
+        2021年7月23日 晚上
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      39 字
+      265 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -225,11 +225,22 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">配置环境</h1>
+            <h1 style="display: none">常见问题</h1>
             
             <div class="markdown-body">
-              <p>requirements.txt是用来记录需要哪些依赖库。<br>生成: pip freeze &gt; requirements.txt<br>导入: pip install -r requirements.txt</p>
-<p>创建环境：conda create -n env_name python=3.6</p>
+              <h2 id="范数的问题"><a href="#范数的问题" class="headerlink" title="范数的问题"></a>范数的问题</h2><p>向量范数：</p>
+<ul>
+<li>1-范数：$$\Vert x\Vert_1=\sum_{i=1}^{n}|x_i|$$<br>向量元素绝对值之和。</li>
+<li>2-范数：$$\Vert x\Vert_2=\sqrt{\sum_{i=1}^{n}x_i^2}$$<br>Euclid范数（欧几里得范数，常用计算向量长度），即向量元素绝对值的平方和再开方。</li>
+<li>$\infty$-范数：$$\Vert x\Vert_{\infty}=\mathop{max}\limits_{i}|x_i|$$<br>即所有向量元素绝对值中的最大值。</li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20473040">0 范数、1 范数、2 范数有什么区别？</a></p>
+<h2 id="各种距离的问题"><a href="#各种距离的问题" class="headerlink" title="各种距离的问题"></a>各种距离的问题</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/27903807?sort=created">欧式空间</a>：欧几里得空间就是在对现实空间的规则抽象和推广（从n&lt;=3推广到有限n维空间）</p>
+<p><img src="/images/pasted-0.png" srcset="/img/loading.gif" lazyload alt="九种常用距离"></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/350744027">数据科学中常见的9种距离度量方法，内含欧氏距离、切比雪夫距离等</a></p>
+<h2 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h2><p>创建环境：conda create -n env_name python=3.6</p>
+<p>requirements.txt用来记录需要哪些依赖库。<br>生成: pip freeze &gt; requirements.txt<br>导入: pip install -r requirements.txt</p>
+<h2 id="CNN的理解"><a href="#CNN的理解" class="headerlink" title="CNN的理解"></a>CNN的理解</h2><p>卷积核的层数等于输入通道数。<br>卷积核的个数等于输出通道数。</p>
 
             </div>
             <hr>
@@ -250,9 +261,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/01/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-26-7-3/">
+                      <a href="/2021/07/28/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-24-7-30/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">每周代码(6.26-7.3)</span>
+                        <span class="hidden-mobile">每周代码(7.24-7.30)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -260,8 +271,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/25/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-6-19-6-25/">
-                        <span class="hidden-mobile">每周代码(6.19-6.25)</span>
+                      <a href="/2021/07/22/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-17-7-23/">
+                        <span class="hidden-mobile">每周代码(7.17-7.23)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

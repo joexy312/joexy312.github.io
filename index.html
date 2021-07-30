@@ -182,18 +182,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-          <i class="index-pin iconfont icon-top" title="Pin on top"></i>
-        
-        <a href="/2021/05/15/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">常用网站记录</a>
+        <a href="/2021/07/28/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%84%91%E8%82%BF%E7%98%A4%E5%88%86%E5%89%B2/">多模态脑肿瘤分割</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/05/15/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">
+        <a href="/2021/07/28/%E5%A4%9A%E6%A8%A1%E6%80%81%E8%84%91%E8%82%BF%E7%98%A4%E5%88%86%E5%89%B2/">
           
           
             
           
-          一些常用的网址备忘
+          基本背景
+Magnetic Resonance Imaging can provide complementary information due to its dependence on variable acquisition parameters, such as T1-weighted(T1), contrast-enhanced T1-weighted(T1c), T2-weighted
         </a>
       </p>
 
@@ -201,26 +200,12 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-15 20:22" pubdate>
-              2021-05-15
+            <time datetime="2021-07-28 20:48" pubdate>
+              2021-07-28
             </time>
           </div>
         
         
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%A4%87%E5%BF%98/">备忘</a>
-            
-          </div>
         
       </div>
     </article>
@@ -232,17 +217,22 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/23/MNIST%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">MNIST手写数字识别</a>
+        <a href="/2021/07/28/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-24-7-30/">每周代码(7.24-7.30)</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/23/MNIST%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
+        <a href="/2021/07/28/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-7-24-7-30/">
           
           
             
           
-          模型设计首先手写了一个简单的CNN：
-123456789101112131415161718192021class network(nn.Module):    def __init__(self):        super(network, self).__init__()        self.net = nn.Sequential(            nn.Conv2d(1, 32,
+          leetcode_15_三数之和思路：
+
+要保证结果不重复，就要第二重循环枚举到的元素不小于当前第一重循环枚举到的元素，第三重循环枚举到的元素不小于当前第二重循环枚举到的元素。保证三元组以从小到大的顺序被枚举到。
+对每一重循环而言，相邻两次枚举的元素也不能相同。
+因为a+b=-c,所以第二和三重循环具有并列关系，可以用双指针进行简化。
+
+123456789101112131415161718192
         </a>
       </p>
 
@@ -250,7 +240,45 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-23 11:41" pubdate>
+            <time datetime="2021-07-28 13:26" pubdate>
+              2021-07-28
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/23/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">常见问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/23/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+          
+          
+            
+          
+          范数的问题向量范数：
+
+1-范数：$$\Vert x\Vert_1=\sum_{i=1}^{n}|x_i|$$向量元素绝对值之和。
+2-范数：$$\Vert x\Vert_2=\sqrt{\sum_{i=1}^{n}x_i^2}$$Euclid范数（欧几里得范数，常用计算向量长度），即向量元素绝对值的平方和再开方。
+$\infty$-范数：$$\Vert x\Vert_{\infty}=\math
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-23 21:02" pubdate>
               2021-07-23
             </time>
           </div>
@@ -326,49 +354,6 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2021-07-16 16:34" pubdate>
-              2021-07-16
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/16/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E6%80%BB%E7%BB%93/">卷积神经网络的总结</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/16/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E6%80%BB%E7%BB%93/">
-          
-          
-            
-          
-          卷积层：卷积层由一组滤波器组成，滤波器可以视为二维数字矩阵。这是一个示例3x3滤波器：我们可以将滤波器与输入图像进行卷积来产生输出图像，具体的步骤如下：
-
-在图像的某个位置上覆盖滤波器；
-将滤波器中的值与图像中的对应像素的值相乘；
-把上面的乘积加起来，得到的和是输出图像中目标像素的值；
-对图像的所有位置重复此操作。
-
-
-查看不同filter对图像的影响
-通常，卷积有助于我们找到特定的局部图像特征（
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-16 09:54" pubdate>
               2021-07-16
             </time>
           </div>
