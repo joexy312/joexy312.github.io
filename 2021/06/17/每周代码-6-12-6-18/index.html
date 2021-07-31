@@ -14,8 +14,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="description" content="
+每周作业">
+  <meta name="author" content="Joe">
   <meta name="keywords" content="">
   
   <title>每周代码(6.12-6.18) - Hexo</title>
@@ -185,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      588 字
+      592 字
     </span>
   
 
@@ -228,7 +229,10 @@
             <h1 style="display: none">每周代码(6.12-6.18)</h1>
             
             <div class="markdown-body">
-              <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-string/">leetcode_344_反转字符串</a><br>思路:直接用双指针将头尾依次交换即可</p>
+              <blockquote>
+<p>每周作业<br> <span id="more"></span> </p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-string/">leetcode_344_反转字符串</a><br>思路:直接用双指针将头尾依次交换即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">reverseString</span>(<span class="hljs-params">self, s</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type s: List[str]</span><br><span class="hljs-string">        :rtype: None Do not return anything, modify s in-place instead.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        low = <span class="hljs-number">0</span><br>        high = <span class="hljs-built_in">len</span>(s) - <span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span>(low &lt; high):<br>            s[low], s[high] = s[high], s[low]<br>            low += <span class="hljs-number">1</span><br>            high -= <span class="hljs-number">1</span><br>            high -= <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 <p><img src="/img/6.17_code_sub/344.png" srcset="/img/loading.gif" lazyload alt="344"></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string/">leetcode_345_反转字符串中的元音字母</a><br>思路:与344题非常相似,只需要每次反转前加上是否是元音字母的判断;<br>判断都在元音字母中,同时满足左指针低于右指针,再继续反转即可</p>

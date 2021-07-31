@@ -14,8 +14,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="description" content="
+树的基本概念和一些典型例题">
+  <meta name="author" content="Joe">
   <meta name="keywords" content="">
   
   <title>树的基本概念和算法 - Hexo</title>
@@ -185,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      972 字
+      985 字
     </span>
   
 
@@ -228,7 +229,10 @@
             <h1 style="display: none">树的基本概念和算法</h1>
             
             <div class="markdown-body">
-              <p><img src="/img/tree.jpg" srcset="/img/loading.gif" lazyload alt=" " title="二叉树"></p>
+              <blockquote>
+<p>树的基本概念和一些典型例题<br> <span id="more"></span> </p>
+</blockquote>
+<p><img src="/img/tree.jpg" srcset="/img/loading.gif" lazyload alt=" " title="二叉树"></p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>满二叉树</strong>：顾名思义<br><strong>完全二叉树</strong>：满二叉树从最后一个结点开始删除</p>
 <p><strong>二叉搜索树</strong>（二叉查找树）：二叉搜索树中，左子树都比其根节点小，右子树都比其根节点大，递归定义。<br>    二叉搜索树中序遍历从小到大排序<br>正常情况下时间复杂度： O(logn)<br>最差：O(n)<br>避免最差情况：使用<strong>平衡二叉树</strong>（AVL）</p>
 <p><strong>平衡二叉树</strong>：平衡二叉树要么是一棵空树，要么保证左右子树的高度之差不大于 1，并且子树也必须是一棵平衡二叉树。<strong>这个方案很好的解决了二叉查找树退化成链表的问题，把插入，查找，删除的时间复杂度最好情况和最坏情况都维持在O(logN)</strong><br><strong>平衡因子</strong>：某节点的左子树与右子树的高度(深度)差即为该节点的平衡因子（BF,Balance Factor），平衡二叉树中不存在平衡因子大于 1 的节点。在一棵平衡二叉树中，节点的平衡因子只能取 0 、1 或者 -1 ，分别对应着左右子树等高，左子树比较高，右子树比较高。（左减右）<br><strong>最小失衡子树</strong>：在新插入的结点向上查找，以第一个平衡因子的绝对值超过 1 的结点为根的子树称为最小不平衡子树。也就是说，一棵失衡的树，是有可能有多棵子树同时失衡的。而这个时候，我们只要调整最小的不平衡子树，就能够将不平衡的树调整为平衡的树。<br>平衡二叉树的失衡调整主要是通过<strong>旋转</strong>最小失衡子树来实现的。根据旋转的方向有两种处理方式，**左旋 **与 <strong>右旋</strong> 。旋转的目的就是减少高度，通过降低整棵树的高度来平衡。哪边的树高，就把那边的树向上旋转。</p>

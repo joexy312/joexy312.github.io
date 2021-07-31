@@ -14,8 +14,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="description" content="
+排序算法python实现总结">
+  <meta name="author" content="Joe">
   <meta name="keywords" content="">
   
   <title>排序算法总结 - Hexo</title>
@@ -228,7 +229,10 @@
             <h1 style="display: none">排序算法总结</h1>
             
             <div class="markdown-body">
-              <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>python实现：</p>
+              <blockquote>
+<p>排序算法python实现总结<br> <span id="more"></span> </p>
+</blockquote>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>python实现：</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">def <span class="hljs-keyword">bubble_sort(arr):</span><br><span class="hljs-keyword"> </span>   length = len(arr)<br>    for i in range(length):  <span class="hljs-comment"># 外层冒泡轮数</span><br>        for <span class="hljs-keyword">j </span>in range(length<span class="hljs-number">-1</span>-i):  <span class="hljs-comment"># 里层依次比较，最大（最小）沉底</span><br>            if arr[<span class="hljs-keyword">j] </span>&gt; arr[<span class="hljs-keyword">j+1]:</span><br><span class="hljs-keyword"> </span>               arr[<span class="hljs-keyword">j], </span>arr[<span class="hljs-keyword">j+1] </span>= arr[<span class="hljs-keyword">j+1], </span>arr[<span class="hljs-keyword">j]</span><br><span class="hljs-keyword"> </span>   return arr<br></code></pre></td></tr></table></figure>
 <p>嵌套循环，时间复杂度为<strong>O(n2)。</strong></p>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>python实现：</p>

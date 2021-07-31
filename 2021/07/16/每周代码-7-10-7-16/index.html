@@ -14,8 +14,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="description" content="
+每周作业">
+  <meta name="author" content="Joe">
   <meta name="keywords" content="">
   
   <title>每周代码(7.10-7.16) - Hexo</title>
@@ -185,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      687 字
+      691 字
     </span>
   
 
@@ -228,7 +229,10 @@
             <h1 style="display: none">每周代码(7.10-7.16)</h1>
             
             <div class="markdown-body">
-              <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/">leetcode_94_二叉树的中序遍历</a><br>思路：</p>
+              <blockquote>
+<p>每周作业<br> <span id="more"></span> </p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/">leetcode_94_二叉树的中序遍历</a><br>思路：</p>
 <ul>
 <li>普通的二叉树遍历，X序遍历就是指的根的位置，比如中序就是把根放中间，用“左根右”的方式遍历;</li>
 <li>可以用递归的方式实现，先遍历左子树，然后输出根的值，然后遍历右子树，前序后续同理，只是顺序不同<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inorderTraversal</span>(<span class="hljs-params">self, root</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type root: TreeNode</span><br><span class="hljs-string">        :rtype: List[int]</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        res = []<br>        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inOrder</span>(<span class="hljs-params">root</span>):</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:<br>                <span class="hljs-keyword">return</span><br>            inOrder(root.left)<br>            res.append(root.val)<br>            inOrder(root.right)<br>        inOrder(root)<br>        <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
@@ -252,6 +256,22 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                  </div>
                 
               </div>
               

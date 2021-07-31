@@ -14,8 +14,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="description" content="
+算法的一些基本问题">
+  <meta name="author" content="Joe">
   <meta name="keywords" content="">
   
   <title>算法基础 - Hexo</title>
@@ -185,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      1.1k 字
     </span>
   
 
@@ -195,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      12
        分钟
     </span>
   
@@ -228,7 +229,10 @@
             <h1 style="display: none">算法基础</h1>
             
             <div class="markdown-body">
-              <h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。<br>空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。</p>
+              <blockquote>
+<p>算法的一些基本问题<br> <span id="more"></span> </p>
+</blockquote>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。<br>空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。</p>
 <p>严谨的进行算法的时间复杂度：「 大O符号表示法 」，即 T(n) = O(f(n))。<br>其中 n 表示数据规模 ，O(f(n))表示运行算法所需要执行的指令数，和f(n)成正比。<br><strong>一个问题的规模是n，解这一问题的某一算法所需要的时间为T(n)。T(n)称为这一算法的“时间复杂度”。</strong></p>
 <p>O(1): 无论代码执行了多少行，其他区域不会影响到操作，这个代码的时间复杂度都是O(1)<br>O(n): for循环里面的代码会执行 n 遍，因此它消耗的时间是随着 n 的变化而变化的，因此可以用O(n)来表示它的时间复杂度。<br>O(n²) : 当存在双重循环的时候，即把 O(n) 的代码再嵌套循环一遍，它的时间复杂度就是 O(n²) 了。<br>O(logn): 在二分查找法的代码中，通过while循环，成 2 倍数的缩减搜索范围，也就是说需要经过 log2^n 次即可跳出循环。<br>O(nlogn): 将时间复杂度为O(logn)的代码循环N遍的话，那么它的时间复杂度就是 n * O(logn)，也就是了O(nlogn)。</p>
 <h2 id="基本算法思想"><a href="#基本算法思想" class="headerlink" title="基本算法思想"></a>基本算法思想</h2><h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><p><strong>贪心算法是一种在每一步选择中都采取在当前状态下最好或最优的选择，从而希望得到结果是最好或最优的算法。</strong><br>（1）建立数学模型来描述问题。<br>（2）把求解的问题分成若干个子问题。<br>（3）对每一子问题求解，得到子问题的局部最优解。<br>（4）把子问题的局部最优解合成原来问题的一个解。</p>
