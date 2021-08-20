@@ -15,7 +15,7 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Joe">
   <meta name="keywords" content="">
   
   <title>论文笔记-Brain Tumor Segmentation with Missing Modalities - Hexo</title>
@@ -265,7 +265,7 @@
 </ul>
 <p><strong>因为输入四个模态，最终会学到四个CR值，如果缺失了一个模态，就可以用已有的相关表达来进行恢复，作者用最接近的一个模态来恢复缺失图像，保证网络一直有四个输入。</strong></p>
 <h4 id="Fusion-Strategy"><a href="#Fusion-Strategy" class="headerlink" title="Fusion Strategy"></a>Fusion Strategy</h4><p><img src="/img/papers/LMCR4.png" srcset="/img/loading.gif" lazyload alt="Fusion Block"><br>思路：根据四个模态的特征表达在分割结果中的贡献进行加权。<br><strong>根据LCE的公式，每个特征表达和另外三个模态都是线性相关的。</strong><br>权重的学习：注意力模块，包括通道注意力（模态）和空间注意力。分别和特征表达$F$相乘，获得注意力表达$F_c$和$F_s$，然后通过相加获取最终的融合特征。一个模态的权重越大，对分割结果的贡献也就越大。</p>
-<h4 id="Network-Architecture-and-Learning-Process"><a href="#Network-Architecture-and-Learning-Process" class="headerlink" title="Network Architecture and Learning Process"></a>Network Architecture and Learning Process</h4><p><img src="/img/papers/LMCR5.png" srcset="/img/loading.gif" lazyload alt="网络整体的框架"><br>损失函数：$$L_{total}=L_{dice}+L_1$$,$L_1$是mean absolute loss。</p>
+<h4 id="Network-Architecture-and-Learning-Process"><a href="#Network-Architecture-and-Learning-Process" class="headerlink" title="Network Architecture and Learning Process"></a>Network Architecture and Learning Process</h4><p><img src="/img/papers/LMCR5.png" srcset="/img/loading.gif" lazyload alt="网络整体的框架"><br>损失函数：<script type="math/tex">L_{total}=L_{dice}+L_1</script>,$L_1$是mean absolute loss。</p>
 <p>在分割不同区域时，可能需要不同的感受野，考虑到普通的UNet感受野有限，不能获取足够的语义特征信息，本文在编码和解码部分使用了<strong>残差块</strong>和<strong>空洞卷积</strong>获取不同尺度的特征。</p>
 <h3 id="Data-and-Implementation-Details"><a href="#Data-and-Implementation-Details" class="headerlink" title="Data and Implementation Details"></a>Data and Implementation Details</h3><p>数据集：BraTS 2018：285病例，四个模态的MR图像，三个分割类（complete tumor， tumor core和enhancing tumor），已经经过预处理（配准，插值，颅骨剥离）</p>
 <p><img src="/img/papers/LMCR6.png" srcset="/img/loading.gif" lazyload alt="DICE"><br><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2003.08870.pdf">论文原文</a></p>
@@ -275,6 +275,22 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/BTS/">BTS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MICCAI/">MICCAI</a>
+                    
+                  </div>
                 
               </div>
               
