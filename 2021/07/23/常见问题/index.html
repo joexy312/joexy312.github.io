@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      498 字
+      804 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      10
        分钟
     </span>
   
@@ -251,6 +251,26 @@
 <h2 id="目标函数与损失函数"><a href="#目标函数与损失函数" class="headerlink" title="目标函数与损失函数"></a>目标函数与损失函数</h2><p>目标函数是最终需要优化的函数，其中包括经验损失和结构损失：</p>
 <p>经验损失(loss)就是传说中的损失函数或者代价函数。结构损失(Ω)就是正则项之类的来控制模型复杂程度的函数。</p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/52398145/answer/209145104">参考</a></p>
+<h2 id="python常用的函数"><a href="#python常用的函数" class="headerlink" title="python常用的函数"></a>python常用的函数</h2><h3 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h3><p>Counter是一个容器，用于跟踪添加相等值的次数。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> *<br><br>counter = Counter(<span class="hljs-string">&#x27;abcdefgg&#x27;</span>)<br>counter<br>counter[<span class="hljs-string">&#x27;a&#x27;</span>]<br>counter.<span class="hljs-keyword">update</span>(<span class="hljs-string">&#x27;aaaaaaaaaaaaaaaa&#x27;</span>)<br>counter<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">&gt;</span><span class="bash">&gt;&gt;Counter(&#123;<span class="hljs-string">&#x27;a&#x27;</span>: 1, <span class="hljs-string">&#x27;b&#x27;</span>: 1, <span class="hljs-string">&#x27;c&#x27;</span>: 1, <span class="hljs-string">&#x27;d&#x27;</span>: 1, <span class="hljs-string">&#x27;e&#x27;</span>: 1, <span class="hljs-string">&#x27;f&#x27;</span>: 1, <span class="hljs-string">&#x27;g&#x27;</span>: 2&#125;)</span><br><span class="hljs-meta">&gt;</span><span class="bash">&gt;&gt;1</span><br><span class="hljs-meta">&gt;</span><span class="bash">&gt;&gt;Counter(&#123;<span class="hljs-string">&#x27;a&#x27;</span>: 17, <span class="hljs-string">&#x27;b&#x27;</span>: 1, <span class="hljs-string">&#x27;c&#x27;</span>: 1, <span class="hljs-string">&#x27;d&#x27;</span>: 1, <span class="hljs-string">&#x27;e&#x27;</span>: 1, <span class="hljs-string">&#x27;f&#x27;</span>: 1, <span class="hljs-string">&#x27;g&#x27;</span>: 2&#125;)</span><br></code></pre></td></tr></table></figure>
+
+<p>排序：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">s = sorted(<span class="hljs-name">counter</span>.items(),key=lambda x<span class="hljs-symbol">:x</span>[<span class="hljs-number">0</span>])<br>s<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&gt;&gt;&gt;<span class="hljs-selector-attr">[(<span class="hljs-string">&#x27;a&#x27;</span>, 17), (<span class="hljs-string">&#x27;b&#x27;</span>, 1), (<span class="hljs-string">&#x27;c&#x27;</span>, 1), (<span class="hljs-string">&#x27;d&#x27;</span>, 1), (<span class="hljs-string">&#x27;e&#x27;</span>, 1), (<span class="hljs-string">&#x27;f&#x27;</span>, 1), (<span class="hljs-string">&#x27;g&#x27;</span>, 2)]</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="deque-—-Double-Ended-Queue"><a href="#deque-—-Double-Ended-Queue" class="headerlink" title="deque — Double-Ended Queue"></a>deque — Double-Ended Queue</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">d</span> = collections.deque(<span class="hljs-string">&#x27;abcdefg&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">deque</span><span class="hljs-params">([<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;f&#x27;</span>, <span class="hljs-string">&#x27;g&#x27;</span>])</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="defaultdict"><a href="#defaultdict" class="headerlink" title="defaultdict"></a>defaultdict</h3><p>defaultdict当修改未初始化的key-value时，会用默认值替换，其他功能与dict相同</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">a</span>=defaultdict(list)         <span class="hljs-comment"># list&#x27;s default value is []</span><br><span class="hljs-keyword">a</span>[<span class="hljs-string">&quot;first&quot;</span>].append(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">a</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="OrderedDict"><a href="#OrderedDict" class="headerlink" title="OrderedDict"></a>OrderedDict</h3><p>OrderedDict 可以理解为有序的dict，底层源码是通过双向链表来实现，每一个元素为一个map存储key-value。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f2a429aa5963">参考</a></p>
+<h2 id="递归和迭代的区别"><a href="#递归和迭代的区别" class="headerlink" title="递归和迭代的区别"></a>递归和迭代的区别</h2><p>递归是重复调用函数自身实现循环。迭代是函数内某段代码实现循环。</p>
 
             </div>
             <hr>
