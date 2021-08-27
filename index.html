@@ -194,7 +194,7 @@
             
           
           
-一些自己老是忘的小问题。
+常见问题的笔记。
         </a>
       </p>
 
@@ -220,6 +220,137 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/27/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/27/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+          
+          
+            
+          
+          On the Automatic Generation of Medical Imaging ReportsAbstract医学影像在临床诊断和治疗中被广泛应用，但手写报告面临容易出错、耗时等问题;本文研究医学影像报告的自动生成。所面临的主要挑战：
+
+一份完整报告包含多种形式的信息;
+医学图像中的异常区域很难识别;
+报告通常非常长本文贡献：
+构建了一个多任务学习框架，联合执行标签预测和段落生成
+提
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-27 13:31" pubdate>
+              2021-08-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/27/%E6%9C%AC%E5%91%A8%E7%AC%94%E8%AE%B0/">本周笔记</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/27/%E6%9C%AC%E5%91%A8%E7%AC%94%E8%AE%B0/">
+          
+          
+            
+          
+          脑肿瘤分割模型实现网络结构实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-27 01:11" pubdate>
+              2021-08-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/24/Git-Github-Pycharm/">Git+Github+Pycharm</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/24/Git-Github-Pycharm/">
+          
+          
+            
+          
+          基本操作查看版本：
+1git --version
+初始化仓库（在某个目录下初始化仓库后会自动产生.git目录，改目录下工作的所有文档可使用git进行管理）：
+1git init
+查看文件、分支状态：
+1git status
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-24 19:40" pubdate>
+              2021-08-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">配置记录</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+            
+              <a href="/tags/%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">配置记录</a>
             
           </div>
         
@@ -334,172 +465,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/18/leetcode%E5%9B%B0%E9%9A%BE%E9%A2%98-233/">leetcode困难题-233</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/18/leetcode%E5%9B%B0%E9%9A%BE%E9%A2%98-233/">
-          
-          
-            
-          
-          数字1的个数-题解
-数字1的个数等于每个数位上1的个数之和，如$n=1234$,答案为：
-
-个位上1的数量
-十位上1的数量 
-百位上1的数量
-千位上1的数量四个部分求和。
-
-以百位为例，对每1000个数，百位上1的数量为100，即100～199。即令数位为$k$（个位$k=0$），完整的循环会有$10^k$个1。剩下不完整的循环应用$n mod 10^{k+1}$表示。如对个位而言，剩下数字为4;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-18 10:46" pubdate>
-              2021-08-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-            
-              <a href="/categories/%E7%AE%97%E6%B3%95/%E5%9B%B0%E9%9A%BE%E9%A2%98/">困难题</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-              <a href="/tags/%E5%9B%B0%E9%9A%BE%E9%A2%98/">困难题</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-2021%E6%9A%91%E6%9C%9F%E8%AF%BE%E7%A8%8B/">机器学习算法基础总结</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-2021%E6%9A%91%E6%9C%9F%E8%AF%BE%E7%A8%8B/">
-          
-          
-            
-          
-          机器学习
-针对一个任务（Task）T，和一个性能指标（Performance Metric）P，若程序通过经验（Experience）E在任务T上的指标P获得了提升，那么就认为，程序针对T和P，对E进行了学习。
-
-机器学习任务模型从数据标签来看：有监督、半监督、无监督从数据学习方式来看：生成模型、判别模型任务：分类任务、回归任务、聚类、降维、序列标注……
-机器学习算法基础贝叶斯学派与频率学派
-频率
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-17 13:31" pubdate>
-              2021-08-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-UNet/">论文笔记-UNet++</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/11/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-UNet/">
-          
-          
-            
-          
-          UNet++: Redesigning Skip Connections to Exploit Multiscale Features in Image Segmentation
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-11 14:00" pubdate>
-              2021-08-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/U-Net/">U-Net++</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
