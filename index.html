@@ -233,6 +233,110 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/09/03/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-8-28-9-3/">每周代码(8.28-9.3)</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/03/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-8-28-9-3/">
+          
+          
+            
+          
+          leetcode_274_H 指数思路：
+
+这道题仔细分析一下题目就可以发现只需对citations列表进行排序即可。然后依次遍历比较citations[i]和len(citations)-i，比如i=2时，如果citations[2]就已经大于了len(citations)-i，说明至少还有len(citations)-i-1篇引用是大于citations[2]的，已经满足条件，此时返回len(
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-03 15:31" pubdate>
+              2021-09-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/01/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-CDGPT2/">论文笔记-CDGPT2</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/01/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-CDGPT2/">
+          
+          
+            
+          
+          本文的贡献本文提出了一个conditioned transformer-based model(CDGPT2)，即‘conditioned distil generative pre-trained transformer2,’根据X-Ray image生成完整的报告数据集：IU-XRay。  
+
+网络包含encoder部分——根据图像输出视觉特征和语义特征，以及decoder部分——生成单词。e
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-01 13:00" pubdate>
+              2021-09-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CDGPT2/">CDGPT2</a>
+            
+              <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/08/27/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
       </h1>
 
@@ -351,113 +455,6 @@
               <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
             
               <a href="/tags/%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">配置记录</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/24/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-8-21-8-27/">每周代码(8.21-8.27)</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/24/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-8-21-8-27/">
-          
-          
-            
-          
-          leetcode_232_用栈实现队列思路：
-
-最基本的思路就是用两个栈一个模拟后进先出（栈stack）一个模拟先进先出（队列queue）。
-在push的时候，首先将stack中的栈顶元素依次弹出放入queue，此时queue就是队列的顺序，执行完push再反方向传回stack即可。
-其他操作就可以用栈的标准操作完成。
-
-12345678910111213141516171819202122232
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-24 13:03" pubdate>
-              2021-08-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/20/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-8-14-8-20/">每周代码(8.14-8.20)</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/20/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-8-14-8-20/">
-          
-          
-            
-          
-          
-每周作业。
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-20 14:20" pubdate>
-              2021-08-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
             
           </div>
         

@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Joe">
+  <meta name="keywords" content="">
+  
+  <title>论文笔记-CDGPT2 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.6.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"joexy312.github.io","root":"/","version":"1.8.10","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 20vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Joe</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="论文笔记-CDGPT2">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-01 13:00" pubdate>
+        2021年9月1日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">论文笔记-CDGPT2</h1>
+            
+            <div class="markdown-body">
+              <h2 id="本文的贡献"><a href="#本文的贡献" class="headerlink" title="本文的贡献"></a>本文的贡献</h2><p>本文提出了一个conditioned transformer-based model(CDGPT2)，即‘conditioned distil generative pre-trained transformer2,’<strong>根据X-Ray image生成完整的报告</strong><br>数据集：IU-XRay。  </p>
+<p><img src="/images/pasted-19.png" srcset="/img/loading.gif" lazyload alt="网络整体结构"></p>
+<p>网络包含encoder部分——根据图像输出<strong>视觉特征</strong>和<strong>语义特征</strong>，以及decoder部分——<strong>生成单词</strong>。<br>encoder是一个预训练的Chexnet，本文通过微调来输出对tags的预测。对tags的预测分数用来与对应的预训练word2vec此嵌入相乘，词嵌入在大型的医学语料库中训练，和视觉特征一起输入decoder。<br>decoder是一个预训练的disilGPT2,通过视觉特征和tags embedding的调整，输出完整报告。</p>
+<h2 id="自注意力"><a href="#自注意力" class="headerlink" title="自注意力"></a>自注意力</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/265108616">Attention注意力机制与self-attention自注意力机制</a></p>
+<h3 id="注意力机制模型"><a href="#注意力机制模型" class="headerlink" title="注意力机制模型"></a>注意力机制模型</h3><p><img src="/images/pasted-20.png" srcset="/img/loading.gif" lazyload alt="注意力机制模型"></p>
+<h3 id="Attention计算过程"><a href="#Attention计算过程" class="headerlink" title="Attention计算过程"></a>Attention计算过程</h3><p>至于Attention机制的具体计算过程，如果对目前大多数方法进行抽象的话，可以将其归纳为两个过程：<strong>第一个过程是根据Query和Key计算权重系数</strong>，<strong>第二个过程根据权重系数对Value进行加权求和</strong>。而第一个过程又可以细分为两个阶段：第一个阶段根据Query和Key计算两者的相似性或者相关性；第二个阶段对第一阶段的原始分值进行归一化处理；这样，可以将Attention的计算过程抽象为如图展示的三个阶段。</p>
+<p><img src="/images/pasted-21.png" srcset="/img/loading.gif" lazyload alt="求相似度的常见方式"></p>
+<p>第二阶段引入类似SoftMax的计算方式对第一阶段的得分进行数值转换，一方面可以进行归一化，将原始计算分值整理成所有元素权重之和为1的概率分布；另一方面也可以通过SoftMax的内在机制更加突出重要元素的权重。即一般采用如下公式计算：</p>
+<p><img src="/images/pasted-22.png" srcset="/img/loading.gif" lazyload alt="softmax"></p>
+<p>第二阶段的计算结果$a_i$即为$value_i$对应的权重系数，然后进行加权求和即可得到Attention数值：</p>
+<p><img src="/images/pasted-23.png" srcset="/img/loading.gif" lazyload alt="attention"></p>
+<p>从本质上理解，Attention是从大量信息中有筛选出少量重要信息，并聚焦到这些重要信息上，忽略大多不重要的信息。权重越大越聚焦于其对应的Value值上，即权重代表了信息的重要性，而Value是其对应的信息。</p>
+<h3 id="Self-attention自注意力机制"><a href="#Self-attention自注意力机制" class="headerlink" title="Self-attention自注意力机制"></a>Self-attention自注意力机制</h3><p>自注意力机制是注意力机制的变体，其减少了对外部信息的依赖，更擅长捕捉数据或特征的内部相关性。自注意力机制在文本中的应用，主要是通过计算单词间的互相影响，来解决长距离依赖问题。自注意力机制的计算过程：<br>1.将输入单词转化成嵌入向量；<br>2.根据嵌入向量得到q，k，v三个向量；<br>3.为每个向量计算一个score：score =q . k ；<br>4.为了梯度的稳定，Transformer使用了score归一化；<br>5.对score施以softmax激活函数；<br>6.softmax点乘Value值v，得到加权的每个输入向量的评分v；<br>7.相加之后得到最终的输出结果z  </p>
+<h2 id="源码阅读"><a href="#源码阅读" class="headerlink" title="源码阅读"></a>源码阅读</h2><p><a target="_blank" rel="noopener" href="https://github.com/omar-mohamed/GPT2-Chest-X-Ray-Report-Generation">源码地址</a></p>
+<h3 id="初始化参数"><a href="#初始化参数" class="headerlink" title="初始化参数"></a>初始化参数</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">FLAGS = arg<span class="hljs-constructor">Handler()</span><br><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">FLAGS</span>.</span></span>set<span class="hljs-constructor">Defaults()</span><br>tf.keras.backend.set<span class="hljs-constructor">_learning_phase(1)</span>  # Sets the learning phase <span class="hljs-keyword">to</span> a fixed value<br></code></pre></td></tr></table></figure>
+
+<h3 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h3><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">tokenizer_wrapper = TokenizerWrapper(<span class="hljs-keyword">FLAGS</span>.all_data_csv, <span class="hljs-keyword">FLAGS</span>.csv_label_columns[<span class="hljs-number">0</span>],<br>                                     <span class="hljs-keyword">FLAGS</span>.max_sequence_length, <span class="hljs-keyword">FLAGS</span>.tokenizer_vocab_size)<br></code></pre></td></tr></table></figure>
+<p>数据集包含7430张图像，all_data_csv是一个（7430,6）的表格，横坐标是数据，纵坐标包括Image index，Patient ID，Findings，Impression，caption和Manual Tags,caption似乎是图片描述的综合，也是输出的目标内容。<br>预训练的gpt2输出层包含50257个节点，表示英语中的字节对编码(byte-pair encoding)。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">class</span> TokenizerWrapper:<br>    def <span class="hljs-constructor">__init__(<span class="hljs-params">self</span>, <span class="hljs-params">dataset_csv_file</span>, <span class="hljs-params">class_name</span>, <span class="hljs-params">max_caption_length</span>, <span class="hljs-params">tokenizer_num_words</span>=None)</span>:<br>        dataset_df = pd.read<span class="hljs-constructor">_csv(<span class="hljs-params">dataset_csv_file</span>)</span>  # &#x27;./IU-XRay/all_data.csv&#x27;<br>        sentences = dataset_df<span class="hljs-literal">[<span class="hljs-identifier">class_name</span>]</span>.tolist<span class="hljs-literal">()</span>  # class_name = &#x27;Caption&#x27;<br>        self.max_caption_length = max_caption_length  # <span class="hljs-number">200</span><br>        self.tokenizer_num_words = tokenizer_num_words  # <span class="hljs-number">1001</span><br>        self.init<span class="hljs-constructor">_tokenizer(<span class="hljs-params">sentences</span>)</span><br>        self.gpt2_tokenizer = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">GPT2Tokenizer</span>.</span></span>from<span class="hljs-constructor">_pretrained(&#x27;<span class="hljs-params">gpt2</span>&#x27;, <span class="hljs-params">add_prefix_space</span>=True)</span><br>        self.gpt2_tokenizer.pad_token = <span class="hljs-string">&quot;&lt;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>tokenizer根据Caption生成了2005个token: {‘UNK’: 1, ‘no’: 2, ‘the’: 3, ‘is’: 4, ‘are’: 5, ‘normal’: 6, ‘startseq’: 7, ‘endseq’: 8, ……………… ‘plateaus’: 2004, ‘valvuloplasty’: 2005}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">init_tokenizer</span>(<span class="hljs-params">self, sentences</span>):</span><br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(sentences)):<br>        <span class="hljs-keyword">if</span> pd.isna(sentences[i]):<br>            sentences[i] = <span class="hljs-string">&quot;&quot;</span><br>        sentences[i] = self.clean_sentence(sentences[i])<br><br>    <span class="hljs-comment"># Tokenize the reviews</span><br>    print(<span class="hljs-string">&quot;Tokenizing dataset..&quot;</span>)<br>    <span class="hljs-comment"># Only the most common `num_words-1` words will be kept. 1001-1=1000</span><br>    self.tokenizer = Tokenizer(oov_token=<span class="hljs-string">&#x27;UNK&#x27;</span>, num_words=self.tokenizer_num_words)<br>    self.tokenizer.fit_on_texts(sentences)  <span class="hljs-comment"># give each word a unique id</span><br>    print(<span class="hljs-string">&quot;number of tokens: &#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(self.tokenizer.word_index))<br>    print(<span class="hljs-string">&quot;Tokenizing is complete.&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="准备训练和测试数据"><a href="#准备训练和测试数据" class="headerlink" title="准备训练和测试数据"></a>准备训练和测试数据</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">train_enqueuer, train_steps = get<span class="hljs-constructor">_enqueuer(FLAGS.<span class="hljs-params">train_csv</span>, FLAGS.<span class="hljs-params">batch_size</span>, FLAGS, <span class="hljs-params">tokenizer_wrapper</span>)</span><br>test_enqueuer, _ = get<span class="hljs-constructor">_enqueuer(FLAGS.<span class="hljs-params">test_csv</span>, 1, FLAGS, <span class="hljs-params">tokenizer_wrapper</span>)</span><br>batch_test_enqueuer, _ = get<span class="hljs-constructor">_enqueuer(FLAGS.<span class="hljs-params">test_csv</span>, FLAGS.<span class="hljs-params">batch_size</span>, FLAGS, <span class="hljs-params">tokenizer_wrapper</span>)</span><br>train_enqueuer.start(workers=<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">FLAGS</span>.</span></span>generator_workers, max_queue_size=<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">FLAGS</span>.</span></span>generator_queue_length)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">self</span>.<span class="hljs-function"><span class="hljs-keyword">def</span><span class="hljs-title">ine</span><span class="hljs-params">(<span class="hljs-string">&#x27;generator_queue_length&#x27;</span>, <span class="hljs-number">24</span>, <span class="hljs-string">&#x27;The maximum number of batches in the queue to be trained on.&#x27;</span>)</span></span><br><span class="hljs-keyword">self</span>.<span class="hljs-function"><span class="hljs-keyword">def</span><span class="hljs-title">ine</span><span class="hljs-params">(<span class="hljs-string">&#x27;generator_workers&#x27;</span>, <span class="hljs-number">8</span>, <span class="hljs-string">&#x27;The number of cpu workers generating batches.&#x27;</span>)</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="生成tag-embeddings"><a href="#生成tag-embeddings" class="headerlink" title="生成tag embeddings"></a>生成tag embeddings</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">medical_w2v = <span class="hljs-constructor">Medical_W2V_Wrapper()</span><br># medical_w2v.save<span class="hljs-constructor">_embeddings(<span class="hljs-params">tokenizer_wrapper</span>.<span class="hljs-params">get_word_tokens_list</span>()</span>,<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">FLAGS</span>.</span></span>tags)<br># embeddings = medical_w2v.get<span class="hljs-constructor">_embeddings_matrix_for_words(<span class="hljs-params">tokenizer_wrapper</span>.<span class="hljs-params">get_word_tokens_list</span>()</span>,<br>#                                                          <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">FLAGS</span>.</span></span>tokenizer_vocab_size)<br>tags_embeddings = medical_w2v.get<span class="hljs-constructor">_embeddings_matrix_for_tags(FLAGS.<span class="hljs-params">tags</span>)</span>  # ndarray:(<span class="hljs-number">105</span>, <span class="hljs-number">400</span>)<br># print(f<span class="hljs-string">&quot;Embeddings shape: &#123;embeddings.shape&#125;&quot;</span>)<br>print(f<span class="hljs-string">&quot;Tags Embeddings shape: &#123;tags_embeddings.shape&#125;&quot;</span>)<br>del medical_w2v<br></code></pre></td></tr></table></figure>
+
+<h3 id="编码器"><a href="#编码器" class="headerlink" title="编码器"></a>编码器</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs clean">encoder = CNN_Encoder(<span class="hljs-string">&#x27;pretrained_visual_model&#x27;</span>, <br>                      FLAGS.visual_model_name,   # <span class="hljs-string">&#x27;fine_tuned_chexnet&#x27;</span><br>                      FLAGS.visual_model_pop_layers,  # <span class="hljs-number">2</span><br>                      FLAGS.encoder_layers,   # <span class="hljs-number">0.4</span><br>                      FLAGS.tags_threshold,   # <span class="hljs-number">-1</span><br>                      tags_embeddings, <br>                      FLAGS.finetune_visual_model)  # <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+<p>导入预训练模型：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">def load_model(load_path, model_name):<br>    <span class="hljs-type">path</span> = os.path.<span class="hljs-keyword">join</span>(load_path, model_name)<br><br>    # <span class="hljs-keyword">load</span> <span class="hljs-type">json</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">create</span> model<br>    json_file = <span class="hljs-keyword">open</span>(<span class="hljs-string">&#x27;&#123;&#125;.json&#x27;</span>.format(<span class="hljs-type">path</span>), <span class="hljs-string">&#x27;r&#x27;</span>)<br>    loaded_model_json = json_file.<span class="hljs-keyword">read</span>()<br>    json_file.<span class="hljs-keyword">close</span>()<br>    loaded_model = model_from_json(loaded_model_json)<br>    # # <span class="hljs-keyword">load</span> weights <span class="hljs-keyword">into</span> <span class="hljs-built_in">new</span> model<br>    loaded_model.load_weights(&quot;&#123;&#125;.h5&quot;.format(<span class="hljs-type">path</span>))<br>    print(&quot;Loaded model from disk&quot;)<br>    <span class="hljs-keyword">return</span> loaded_model<br></code></pre></td></tr></table></figure>
+<p>模型有429个layer，其中最后两层：</p>
+<ul>
+<li>427： GlobalAveragePooling2D，input shape：(None,7,7,1024) output shape:(None,1024)</li>
+<li>428： <strong>Flatten+Dense</strong>input shape：(None,1024) output shape:(None,105)</li>
+</ul>
+<h3 id="解码器"><a href="#解码器" class="headerlink" title="解码器"></a>解码器</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">decoder = TFGPT2LMHeadModel.from_pretrained(<span class="hljs-string">&#x27;distilgpt2&#x27;</span>, <span class="hljs-attribute">from_pt</span>=<span class="hljs-literal">True</span>, <span class="hljs-attribute">resume_download</span>=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="训练部分"><a href="#训练部分" class="headerlink" title="训练部分"></a>训练部分</h3><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs nix">@tf.function<br>def train_step(images, target, <span class="hljs-attr">test_mode=False):</span><br>    <span class="hljs-keyword">with</span> tf.GradientTape() as tape:<br>        visual_features, <span class="hljs-attr">tags_embeddings</span> = encoder(images)  <span class="hljs-comment"># (batchsize, 49, 1024)  (batchsize, 105, 400)</span><br>        <span class="hljs-attr">dec_input</span> = target[:, <span class="hljs-number">0</span>:-<span class="hljs-number">1</span>]<br><br>        <span class="hljs-comment"># passing the features through the decoder</span><br>        predictions, <span class="hljs-attr">_</span> = decoder(dec_input, <span class="hljs-attr">visual_features=visual_features,</span> <span class="hljs-attr">tags_embeddings=tags_embeddings,</span> <span class="hljs-attr">past=None)</span><br><br>        <span class="hljs-attr">loss</span> = loss_function(target[:, <span class="hljs-number">1</span>:], predictions)<br>    <span class="hljs-keyword">if</span> not test_mode:<br>        <span class="hljs-attr">trainable_variables</span> = encoder.trainable_variables + decoder.trainable_variables<br>        <span class="hljs-attr">gradients</span> = tape.gradient(loss, trainable_variables)<br>        optimizer.apply_gradients(zip(gradients, trainable_variables))<br>    return loss<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>输入的images和target由generator生成：<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs aspectj">img, <span class="hljs-keyword">target</span>, _ = next(train_generator)<br></code></pre></td></tr></table></figure>
+其中的数据准备部分：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prepare_dataset</span>(<span class="hljs-params">self</span>):</span><br>    df = self.dataset_df.sample(frac=<span class="hljs-number">1.</span>, random_state=self.random_state)<br>    <span class="hljs-keyword">if</span> self.augmenter <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>        self.x_path, self.y = df[<span class="hljs-string">&quot;Image Index&quot;</span>].values, self.tokenizer_wrapper.GPT2_encode(<br>            df[self.class_names].values)<br>    <span class="hljs-keyword">else</span>:<br>        self.x_path, self.y = df[<span class="hljs-string">&quot;Image Index&quot;</span>].values, self.tokenizer_wrapper.GPT2_encode(<br>            df[self.class_names].values<br>            , max_length=<span class="hljs-number">1000</span>)<br></code></pre></td></tr></table></figure>
+x.path保存图片名称，y保存通过GPT2将caption转化为的词向量，通过getitem按批大小导入：<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">def __getitem__<span class="hljs-params">(self, idx)</span>:<br>    <span class="hljs-keyword">batch</span>_x_path = self.x_path[idx * self.<span class="hljs-keyword">batch</span>_size:<span class="hljs-params">(idx + 1)</span> * self.<span class="hljs-keyword">batch</span>_size]<br>    <span class="hljs-keyword">batch</span>_x = np.asarray<span class="hljs-params">([self.load_image(x_path)</span> for x_path in <span class="hljs-keyword">batch</span>_x_path])<br>    <span class="hljs-keyword">batch</span>_x = self.transform_<span class="hljs-keyword">batch</span>_images<span class="hljs-params">(batch_x)</span><br>    <span class="hljs-keyword">batch</span>_y = self.y[idx * self.<span class="hljs-keyword">batch</span>_size:<span class="hljs-params">(idx + 1)</span> * self.<span class="hljs-keyword">batch</span>_size]<br>    return <span class="hljs-keyword">batch</span>_x, <span class="hljs-keyword">batch</span>_y, <span class="hljs-keyword">batch</span>_x_path<br></code></pre></td></tr></table></figure></li>
+<li>通过编码器获得视觉特征和加权词嵌入<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">visual_features</span>, tags_embeddings = encoder(images)  # (batchsize, <span class="hljs-number">49</span>, <span class="hljs-number">1024</span>)  (batchsize, <span class="hljs-number">105</span>, <span class="hljs-number">400</span>)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>*</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/CDGPT2/">CDGPT2</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    个人学习记录所用
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/03/%E6%AF%8F%E5%91%A8%E4%BB%A3%E7%A0%81-8-28-9-3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">每周代码(8.28-9.3)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/27/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">论文笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
